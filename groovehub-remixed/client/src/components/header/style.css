@@ -1,0 +1,10 @@
+header {
+    height: 200px;
+    /* Set the desired height */
+}
+
+header img {
+    height: 80%;
+    width:100%;
+    object-fit: cover;
+}
