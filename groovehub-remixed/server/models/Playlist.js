@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const playlistSchema = new Schema({
-  title: {
+  name: {
     type: String,
     required: true,
     trim: true
@@ -11,22 +11,28 @@ const playlistSchema = new Schema({
     type: String,
     required: true,
   },
+  genre: {
+    type: String,
+    required: false
+  },
   songs: [{
     type: String,
-    required: true
+    required: false
   }],
   upvotes: {
     type: Number,
-    default: 0
+    default: 0,
+    required: false
   },
   downvotes: {
     type: Number,
-    default: 0
+    default: 0,
+    required: false
   },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: false
   }
 });
 
