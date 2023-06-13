@@ -11,9 +11,10 @@ const typeDefs = gql`
 
   type Playlist {
     _id: ID
-    title: String
+    name: String
     songs: [String]
     spotifyPlaylistID: String
+    genre: String
     upvotes: Int
     downvotes: Int
     user: User
@@ -26,7 +27,7 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): User
-    addPlaylist(title: String!, songs: [String]!, spotifyPlaylistID: String!, upvotes: Int!, downvotes: Int!, user: ID!): Playlist
+    addPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): Playlist
   }
 `;
 
