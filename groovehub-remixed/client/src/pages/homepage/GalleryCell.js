@@ -1,7 +1,6 @@
 import React from 'react';
 import {Cell} from 'react-foundation';
 
-//this send the 
 // this is the onclick function that takes you to the playlist view
 
 export default function GalleryCell(props) {

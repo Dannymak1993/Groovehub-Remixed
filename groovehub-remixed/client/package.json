@@ -18,7 +18,10 @@
     "react-router-dom": "^6.12.1",
     "react-script": "^2.0.5",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@apollo/client": "^3.5.8",
+    "graphql": "^15.4.0",
+    "jwt-decode": "^3.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

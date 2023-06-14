@@ -15,7 +15,6 @@ const AppRoutes = () => {
             <Route path="/login" element={<Auth />} />
             <Route path="/callback" element={<Callback/>} />
             <Route path="/viewplaylist" element={<ViewPlaylist />} /> 
-            {/* <Route path="/homepage" element={<Homepage/>} /> */}
             {/* <Route path="/community" element={<Community />} />
             <Route path="/editplaylist" element={<EditPlaylist />} />
             <Route path="/myplaylist" element={<MyPlaylist />} />*/}
