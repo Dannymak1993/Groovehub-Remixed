@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
+//this is where the user lands to log into spotify and start the authentication process when the button is clicked the user is taken to the "/login" which initializes the spotifyAuth.js and they end up at "/" after the process is finished. 
+
 export default function authentication() {
     return (
         <div>

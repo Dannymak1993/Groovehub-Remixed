@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 
+//This starts the authorization process for spotify when the user clicks on the spotify log in button. 
+
 const Auth = () => {
 
     useEffect(() => {
@@ -18,3 +20,5 @@ const Auth = () => {
 };
 
 export default Auth;
+
+//This leads to the spotifyCallback.js

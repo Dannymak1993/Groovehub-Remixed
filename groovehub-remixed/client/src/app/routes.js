@@ -4,6 +4,7 @@ import Homepage from '../pages/homepage/index.js';
 import Authentication from '../pages/authentication/index.js';
 import Auth from '../pages/authentication/spotifyAuth.js';
 import Callback from '../pages/authentication/spotifyCallback.js';
+import ViewPlaylist from '../pages/viewplaylist/index.js';
 
 
 const AppRoutes = () => {
@@ -13,11 +14,13 @@ const AppRoutes = () => {
             <Route path="/authentication" element={<Authentication />} />
             <Route path="/login" element={<Auth />} />
             <Route path="/callback" element={<Callback/>} />
-            <Route path="/homepage" element={<Homepage/>} />
+            <Route path="/viewplaylist" element={<ViewPlaylist />} /> 
+            {/* <Route path="/homepage" element={<Homepage/>} /> */}
             {/* <Route path="/community" element={<Community />} />
             <Route path="/editplaylist" element={<EditPlaylist />} />
-            <Route path="/myplaylist" element={<MyPlaylist />} />
-            <Route path="/viewplaylist" element={<ViewPlaylist />} /> */}
+            <Route path="/myplaylist" element={<MyPlaylist />} />*/}
+            
+           
         </Routes>
     );
 };

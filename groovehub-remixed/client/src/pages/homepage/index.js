@@ -3,6 +3,13 @@ import { Grid, Cell } from 'react-foundation';
 import './style.css';
 
 const Homepage = () => {
+
+  // this is the onclick function that takes you to the playlist view
+  function viewPlaylist() {
+
+    window.location.href = 'http://localhost:3000/viewplaylist';
+}
+
   return (
     <div>
       <Grid className="grid">
@@ -12,7 +19,7 @@ const Homepage = () => {
         <Cell className="grid-item classical" data-genre="Classical">
           <div className="gallery-name"></div>
         </Cell>
-        <Cell className="grid-item country" data-genre="Country">
+        <Cell className="grid-item country" data-genre="country" onClick={viewPlaylist}>
           <div className="gallery-name"></div>
         </Cell>
         <Cell className="grid-item disney" data-genre="Disney">
