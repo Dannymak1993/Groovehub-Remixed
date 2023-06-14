@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+//This gets the token from the authorization process and saves it local storage after hashing it.
+
 const Callback = () => {
     const navigate = useNavigate();
 
@@ -28,3 +30,5 @@ const Callback = () => {
     
 }; 
 export default Callback;
+
+//This process then leads you to the homepage at "/". 
