@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const ViewPlaylist = ({ props }) => {
-    const spotifyPlaylistID = localStorage.getItem('spotifyPlaylistID');
-    const genre = localStorage.getItem('genre');
-    console.log('spotifyPlaylistID:', spotifyPlaylistID);
-    console.log('genre:', genre);
+const ViewPlaylist = ({ playlistInfo }) => {
+    const spotifyPlaylistID = playlistInfo.playlist;
+    const genre = playlistInfo.genre;
+    // console.log(playlistInfo);
+    // console.log('genre:', genre);
     return (
         <div className="view-playlist">
             <h1>{genre}</h1>

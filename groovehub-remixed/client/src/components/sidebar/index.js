@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import DannyImage from '../../images/DannyPhoto.jpg';
-import JoeImage from '../../images/JoePhoto.jpg';
-import OscarImage from '../../images/OscarPhoto.jpg';
-import SamImage from '../../images/SamPhoto.jpg';
-import Logo from '../../images/Logo.jpg';
 import './style.css';
 
 
@@ -61,31 +56,31 @@ const Sidebar = () => {
                             </p>
                             <li>
                                 <a href="https://github.com/Dannymak1993" target="_blank" rel="noopener noreferrer">
-                                    <img src={DannyImage} alt="Danny Mak's GitHub" />
+                                    <img src='/images/DannyPhoto.jpg' alt="Danny Mak's GitHub" />
                                     <p>Danny Mak</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://github.com/Joecode22" target="_blank" rel="noopener noreferrer">
-                                    <img src={JoeImage} alt="Joe Mckinney's GitHub" />
+                                    <img src='/images/JoePhoto.jpg' alt="Joe Mckinney's GitHub" />
                                     <p>Joe Mckinney</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://github.com/oscarmedina234" target="_blank" rel="noopener noreferrer">
-                                    <img src={OscarImage} alt="Oscar Melina's GitHub" />
+                                    <img src='/images/OscarPhoto.jpg' alt="Oscar Melina's GitHub" />
                                     <p>Oscar Medina</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://github.com/SamH16205" target="_blank" rel="noopener noreferrer">
-                                    <img src={SamImage} alt="Sam Halloum's GitHub" />
+                                    <img src='/images/SamPhoto.jpg' alt="Sam Halloum's GitHub" />
                                     <p>Sam Halloum</p>
 
                                 </a>
                             </li>
                             <div>
-                                <img className="logo" src={Logo} alt="Groovehub Logo" />
+                                <img className="logo" src='/images/Logo.jpg' alt="Groovehub Logo" />
                                 <p>
                                     &copy; 2023
                                 </p>
