@@ -1,8 +1,11 @@
 import React from 'react';
-// import axios from 'axios';
 
-//this uses the token from authentication and runs an api call to a specific genre and brings in a playlist id and playlist name to render it into the iframe
-const ViewPlaylist = ({ spotifyPlaylistID, genre }) => {
+
+const ViewPlaylist = ({ props }) => {
+    const spotifyPlaylistID = localStorage.getItem('spotifyPlaylistID');
+    const genre = localStorage.getItem('genre');
+    console.log('spotifyPlaylistID:', spotifyPlaylistID);
+    console.log('genre:', genre);
     return (
         <div className="view-playlist">
             <h1>{genre}</h1>
