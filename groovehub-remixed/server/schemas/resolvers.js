@@ -3,7 +3,13 @@ const { User, Playlist } = require('../models');
 const resolvers = {
   Query: {
     users: async () => await User.find(),
+    user: async (parent, { _id }, context) => {
+      return await User.findById(_id);
+    },
     playlists: async () => await Playlist.find(),
+    playlist: async (parent, { _id }, context) => {
+      return await Playlist.findById(_id);
+    }
   },
   Mutation: {
     addUser: async (parent, { username, email, password }, context) => {

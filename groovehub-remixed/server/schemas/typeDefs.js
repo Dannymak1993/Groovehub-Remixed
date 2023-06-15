@@ -22,7 +22,9 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
+    user(_id: ID!): User
     playlists: [Playlist]
+    playlist(_id: ID!): Playlist
   }
 
   type Mutation {
