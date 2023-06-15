@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const playlistSchema = new Schema({
+const featuredplaylistSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -41,4 +41,4 @@ const playlistSchema = new Schema({
   
 });
 
-module.exports = mongoose.model('Playlist', playlistSchema);
+module.exports = mongoose.model('FeaturedPlaylist', featuredplaylistSchema);
