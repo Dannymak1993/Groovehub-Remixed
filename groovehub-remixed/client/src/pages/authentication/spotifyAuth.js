@@ -11,12 +11,12 @@ const Auth = () => {
         const responseType= 'token';
 
         //Generating the authorization URL
-        const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`;
+        const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=playlist-read-private`;
 
         window.location.href = authorizeUrl;
     }, []);
 
-    return <div>Redirecting to Spotify login.....</div>;
+    // return <div>Redirecting to Spotify login.....</div>;
 };
 
 export default Auth;
