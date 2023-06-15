@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Cell } from 'react-foundation';
 import './style.css';
 import { useQuery } from '@apollo/client';
-import { QUERY_PLAYLIST } from '../../utils/queries.js'
+import { QUERY_FEATURED_PLAYLIST } from '../../utils/queries.js'
 
 function viewPlaylist(spotifyPlaylistID, genre) {
   window.location.href = 'http://localhost:3000/viewplaylist';
@@ -11,8 +11,8 @@ function viewPlaylist(spotifyPlaylistID, genre) {
 };
 
 const Homepage = () => {
-  const { loading, error, data } = useQuery(QUERY_PLAYLIST);
-  const playlistdata = data?.playlists || [];
+  const { loading, error, data } = useQuery(QUERY_FEATURED_PLAYLIST);
+  const playlistdata = data?.featuredPlaylists || [];
 
   console.log(playlistdata)
 
