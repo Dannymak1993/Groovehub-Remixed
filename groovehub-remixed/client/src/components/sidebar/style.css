@@ -73,7 +73,7 @@
 .logo {
     width: 70px;
     height: auto;
-    filter: invert(100%) !important;
+    filter: invert(100%);
     display: flex;
     flex-direction: column;
     align-items: center;

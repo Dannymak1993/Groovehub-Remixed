@@ -1,0 +1,111 @@
+body {
+    margin-left: 200px;
+    width: 1700px;
+    -ms-scroll-rails: none;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    background: linear-gradient(to bottom, #df5c28, #c9b831);
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.dashboard-content {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    grid-gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.grid-item {
+    box-sizing: border-box;
+    text-align: center;
+    width: 220px;
+    height: 220px;
+    background: #BBB;
+    border-radius: 50%;
+    position: relative;
+}
+
+.grid-item:hover::after {
+    content: attr(data-genre);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFF;
+    font-family: 'Darumadrop One', cursive;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+}
+
+.gallery-name {
+    font-family: 'Darumadrop One', cursive;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 50%;
+}
+
+.grid-item:hover .gallery-name {
+    opacity: 1;
+}
+
+.grid-item img {
+    position: relative;
+}
+
+.grid-item:nth-child(1),
+.grid-item:nth-child(2),
+.grid-item:nth-child(3) {
+    margin-top: 60px;
+}
+
+
+.off-canvas-content {
+    overflow: hidden;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
