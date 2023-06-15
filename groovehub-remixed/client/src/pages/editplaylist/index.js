@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ADD_USER_PLAYLIST } from '../../utils/mutations';
 
 const EditPlaylist = () => {
+
     const Navigate = useNavigate()
     const [name, setName] = useState('');
     const [spotifyPlaylistID, setSpotifyPlaylistID] = useState('');

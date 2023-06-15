@@ -4,8 +4,10 @@ import './style.css';
 import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { QUERY_USER_PLAYLIST } from '../../utils/queries.js';
+import GetMyPlaylist from './GetMyPlaylist';
 
 const MyPlaylist = ({ setplaylistInfo }) => {
+        
     const Navigate = useNavigate();
     const { loading, error, data } = useQuery(QUERY_USER_PLAYLIST);
     const userPlaylists = data?.userPlaylists || [];
@@ -14,10 +16,13 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         setplaylistInfo({ playlist: spotifyPlaylistID, name: name });
         Navigate('/viewplaylist');
     };
-
+//this is using the GetMyPlaylist component that calls the api and renders the list of playlists.
     return (
         <div>
-            <Grid className="grid">
+
+            <GetMyPlaylist/>
+            {/* <Grid className="grid">
+                
                 {userPlaylists.map((playlist, index) => (
                     <Cell
                         onClick={() => handlesubmit(playlist.spotifyPlaylistID, playlist.name, playlist.genre)}
@@ -28,7 +33,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                         <div className="gallery-name">{playlist.name}</div>
                     </Cell>
                 ))}
-            </Grid>
+            </Grid> */}
         </div>
     );
 };
