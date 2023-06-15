@@ -15,6 +15,10 @@ const playlistSchema = new Schema({
     type: String,
     required: false
   },
+  community: {
+    type: Boolean,
+    required: false
+  },
   songs: [{
     type: String,
     required: false
@@ -34,6 +38,7 @@ const playlistSchema = new Schema({
     ref: 'User',
     required: false
   }
+  
 });
 
 module.exports = mongoose.model('Playlist', playlistSchema);

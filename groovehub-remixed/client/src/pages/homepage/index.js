@@ -57,14 +57,45 @@ import { QUERY_PLAYLIST } from '../../utils/queries.js'
 
 //this generates the homepage gallery
 
+// const Homepage = () => {
+//   const { loading, error, data } = useQuery(QUERY_PLAYLIST);
+//   const playlistdata = data?.playlists || {};
+//   if (error) {
+//     console.log(error)
+//   }
+//   console.log(playlistdata)
+//   console.log(typeof playlistdata);
+//   return (
+//     <div>
+//       <Grid className="grid">
+//         {playlistdata.map((item, index) => (
+//           <GalleryCell key={index} data-genre={item.genre} />
+//         ))}
+//       </Grid>
+//     </div>
+//   );
+
+// };
+
+// export default Homepage;
+
 const Homepage = () => {
   const { loading, error, data } = useQuery(QUERY_PLAYLIST);
-  const playlistdata = data?.playlists || {};
-  if (error) {
-    console.log(error)
+  const playlistdata = data?.playlists || [];
+
+  if (loading) {
+    return <p>Loading playlists...</p>;
   }
-  console.log(playlistdata)
-  console.log(typeof playlistdata);
+
+  if (error) {
+    console.error(error);
+    return <p>Error loading playlists.</p>;
+  }
+
+  if (playlistdata.length === 0) {
+    return <p>No playlists available.</p>;
+  }
+
   return (
     <div>
       <Grid className="grid">
@@ -74,8 +105,8 @@ const Homepage = () => {
       </Grid>
     </div>
   );
-
 };
 
 export default Homepage;
+
 
