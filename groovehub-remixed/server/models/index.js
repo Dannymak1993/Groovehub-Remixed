@@ -1,4 +1,6 @@
 const User = require('./User');
-const Playlist = require('./Playlist');
+const FeaturedPlaylist = require('./FeaturedPlaylist');
+const UserPlaylist = require('./UserPlaylist');
+const CommunityPlaylist = require('./CommunityPlaylist');
 
-module.exports = { User, Playlist };
+module.exports = { User, FeaturedPlaylist, UserPlaylist, CommunityPlaylist };

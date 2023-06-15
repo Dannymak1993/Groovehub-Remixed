@@ -1,4 +1,4 @@
-const { User, Playlist } = require('../models');
+const { User, FeaturedPlaylist, UserPlaylist, CommunityPlaylist } = require('../models');
 
 const resolvers = {
   Query: {
@@ -6,9 +6,17 @@ const resolvers = {
     user: async (parent, { _id }, context) => {
       return await User.findById(_id);
     },
-    playlists: async () => await Playlist.find(),
-    playlist: async (parent, { _id }, context) => {
-      return await Playlist.findById(_id);
+    featuredPlaylists: async () => await FeaturedPlaylist.find(),
+    featuredPlaylist: async (parent, { _id }, context) => {
+      return await FeaturedPlaylist.findById(_id);
+    },
+    userPlaylists: async () => await UserPlaylist.find(),
+    userPlaylist: async (parent, { _id }, context) => {
+      return await UserPlaylist.findById(_id);
+    },
+    communityPlaylists: async () => await CommunityPlaylist.find(),
+    communityPlaylist: async (parent, { _id }, context) => {
+      return await CommunityPlaylist.findById(_id);
     }
   },
   Mutation: {
@@ -16,8 +24,16 @@ const resolvers = {
       const user = await User.create({ username, email, password });
       return user;
     },
-    addPlaylist: async (parent, { name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user }, context) => {
-      const playlist = await Playlist.create({ name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user });
+    addFeaturedPlaylist: async (parent, { name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await FeaturedPlaylist.create({ name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user });
+      return playlist;
+    },
+    addUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await UserPlaylist.create({ name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user });
+      return playlist;
+    },
+    addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user });
       return playlist;
     }
   }

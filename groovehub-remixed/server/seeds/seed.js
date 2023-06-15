@@ -4,7 +4,7 @@ const db = require("../models");
 
 mongoose.connect(process.env.MONGODB_URI);
 
-const playlistSeed = [
+const featuredplaylistSeed = [
   {
     name: 'Anime',
     spotifyPlaylistID: '37i9dQZF1DX6XceWZP1znY',
@@ -52,9 +52,9 @@ const playlistSeed = [
   },
 ];
 
-db.Playlist
+db.FeaturedPlaylist
   .deleteMany({})
-  .then(() => db.Playlist.collection.insertMany(playlistSeed))
+  .then(() => db.FeaturedPlaylist.collection.insertMany(featuredplaylistSeed))
   .then(data => {
     console.log("Insert operation result: ", data);
     process.exit(0);
