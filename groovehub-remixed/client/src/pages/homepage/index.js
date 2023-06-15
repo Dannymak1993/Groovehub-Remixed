@@ -4,17 +4,17 @@ import './style.css';
 import { useQuery } from '@apollo/client';
 import { QUERY_PLAYLIST } from '../../utils/queries.js'
 
-function viewPlaylist() {
-
+function viewPlaylist(spotifyPlaylistID, genre) {
   window.location.href = 'http://localhost:3000/viewplaylist';
-
+  localStorage.setItem('spotifyPlaylistID', spotifyPlaylistID);
+  localStorage.setItem('genre', genre);
 };
 
 const Homepage = () => {
   const { loading, error, data } = useQuery(QUERY_PLAYLIST);
   const playlistdata = data?.playlists || [];
 
-console.log(playlistdata)
+  console.log(playlistdata)
 
   return (
     <div>
@@ -40,5 +40,3 @@ console.log(playlistdata)
 };
 
 export default Homepage;
-
-
