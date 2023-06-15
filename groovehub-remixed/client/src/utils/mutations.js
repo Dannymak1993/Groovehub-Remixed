@@ -33,27 +33,11 @@ export const ADD_USER = gql`
 //   }
 // }
 
-
-// AddPlaylist:
-// mutation {
-//   addPlaylist(
-//     user: "6487883bfe89ef692c6e65b9",
-//     title: "UberLeetTechnoTrance",
-//     songs: ["song1", "song2", "song3"],
-//     spotifyPlaylistID: "1a2!Q@W1q2w!Q@W",
-//     upvotes: 5,
-//     downvotes: 1
-//   ) {
-//     _id
-//     user {
-//       _id
-//       username
-//     }
-//     title
-//     songs
-//     spotifyPlaylistID
-//     upvotes
-//     downvotes
-//   }
-// }
-
+export const ADD_USER_PLAYLIST = gql`
+mutation AddUserPlaylist($name: String!, $spotifyPlaylistID: String!) {
+  addUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistID) {
+    _id
+    name
+  }
+}
+`;

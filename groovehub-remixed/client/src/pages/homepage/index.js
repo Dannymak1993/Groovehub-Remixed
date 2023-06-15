@@ -2,19 +2,14 @@ import React from 'react';
 import { Grid, Cell } from 'react-foundation';
 import './style.css';
 import { useQuery } from '@apollo/client';
-
-
 import { useNavigate } from 'react-router-dom';
 import { QUERY_FEATURED_PLAYLIST } from '../../utils/queries.js'
-
-
 
 
 const Homepage = ({setplaylistInfo}) => {
   const Navigate = useNavigate ()
   const { loading, error, data } = useQuery(QUERY_FEATURED_PLAYLIST);
   const playlistdata = data?.featuredPlaylists || [];
-
 
   const handlesubmit = (playlist, genre) => {
     setplaylistInfo({ playlist: playlist, genre: genre })
