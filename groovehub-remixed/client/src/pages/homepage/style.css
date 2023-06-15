@@ -57,12 +57,12 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
   color: #FFF;
   font-family: 'Darumadrop One', cursive;
-  opacity: 0.9;
+  opacity: 1;
   transition: opacity 0.3s ease;
   border-radius: 50%;
 }
@@ -90,7 +90,6 @@ body {
 
 .grid-item img {
   position: relative;
-
 }
 
 .grid-item:nth-child(1),
@@ -104,56 +103,9 @@ body {
   overflow: hidden;
 }
 
-.anime {
-  background-image: url('../../images/Anime.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.classical {
-  background-image: url('../../images/Classical.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.country {
-  background-image: url('../../images/Country.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.disney {
-  background-image: url('../../images/Disney.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.electronic {
-  background-image: url('../../images/Electronic.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.hiphop {
-  background-image: url('../../images/Hip Hop.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.jazz {
-  background-image: url('../../images/Jazz.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.korean {
-  background-image: url('../../images/Korean.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.rock {
-  background-image: url('../../images/Rock.jpg');
-  background-size: cover;
-  background-position: center;
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
