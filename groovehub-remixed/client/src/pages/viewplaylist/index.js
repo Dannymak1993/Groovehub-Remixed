@@ -1,5 +1,5 @@
 import React from 'react';
-
+import LiveChat from '../../components/chat/chat.js'
 
 const ViewPlaylist = ({ playlistInfo }) => {
     const spotifyPlaylistID = playlistInfo.playlist;
@@ -20,6 +20,9 @@ const ViewPlaylist = ({ playlistInfo }) => {
                 loading="lazy"
                 title="Playlist"
             ></iframe>
+
+        <LiveChat chatName = "anime" />
+
         </div>
     );
 };

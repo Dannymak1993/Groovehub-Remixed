@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.5.8",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
@@ -12,16 +13,17 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "dotenv": "^16.1.4",
+    "firebase": "^9.22.2",
+    "firebase-admin": "^11.9.0",
+    "graphql": "^15.4.0",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-foundation": "^0.9.7",
     "react-router-dom": "^6.12.1",
     "react-script": "^2.0.5",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "@apollo/client": "^3.5.8",
-    "graphql": "^15.4.0",
-    "jwt-decode": "^3.1.2"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
