@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -12,6 +13,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    trim: true
+  },
+  password: {
+    type: String,
+    required: true,
     trim: true
   },
   spotifyAccessToken: {
@@ -31,5 +37,22 @@ const userSchema = new Schema({
     ref: 'Playlist'
   }],
 });
+
+
+//anytime something is saved checks password and if the password has been changed 
+//before it saves it will salt the password
+//bcrypt thing
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 module.exports = mongoose.model('User', userSchema);
