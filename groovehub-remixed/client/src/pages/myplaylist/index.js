@@ -28,6 +28,8 @@ const MyPlaylist = ({ setplaylistInfo }) => {
 
 
     const handleEditPlaylist = (playlistId) => {
+
+        //todo: add edit function code here
         Navigate(`/editplaylist/${playlistId}`);
     };
 
@@ -66,6 +68,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                             <button
                                 className="edit-button"
                                 onClick={() => handleEditPlaylist(playlist._id)}
+                                //todo: change edit playlist 
                             >
                                 Edit
                             </button>

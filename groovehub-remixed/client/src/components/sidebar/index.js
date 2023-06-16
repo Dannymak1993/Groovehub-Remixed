@@ -139,7 +139,7 @@ const Sidebar = () => {
                     <li className="sidebar-menu-item">
                         <a href="/myplaylist" onClick={toggleSidebar}>
                             Your Playlists
-                        </Link>
+                        </a>
                     </li>
                     <li className="sidebar-menu-item">
                         <a href="/community" onClick={toggleSidebar}>
