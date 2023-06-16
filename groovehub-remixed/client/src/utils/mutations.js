@@ -41,3 +41,6 @@ mutation AddUserPlaylist($name: String!, $spotifyPlaylistID: String!) {
   }
 }
 `;
+
+//TODO: add delete mutation
+// export const DELETE_USER_PLAYLIST = gql``
