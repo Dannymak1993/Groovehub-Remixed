@@ -19,9 +19,9 @@ const MyPlaylist = ({ setplaylistInfo }) => {
 //this is using the GetMyPlaylist component that calls the api and renders the list of playlists.
     return (
         <div>
-
-            <GetMyPlaylist/>
-            {/* <Grid className="grid">
+{/* <button onClick={<}>Get My Playlists</button> */}
+            {/* <GetMyPlaylist/> */}
+            <Grid className="grid">
                 
                 {userPlaylists.map((playlist, index) => (
                     <Cell
@@ -33,7 +33,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                         <div className="gallery-name">{playlist.name}</div>
                     </Cell>
                 ))}
-            </Grid> */}
+            </Grid>
         </div>
     );
 };
