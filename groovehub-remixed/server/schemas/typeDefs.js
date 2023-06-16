@@ -80,8 +80,10 @@ const typeDefs = gql`
 
     deleteCommunityPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
 
-    //todo: add typedef for updateuserplaylist
+    updateUserPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
+
   }
 `;
+
 
 module.exports = typeDefs;

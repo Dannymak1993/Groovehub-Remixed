@@ -64,7 +64,6 @@ const resolvers = {
       const playlist = await UserPlaylist.findOneAndDelete({ name, spotifyPlaylistID});
       return playlist;
     },
-    //todo updateUserPlaylist:
     addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
       const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user });
       return playlist;
@@ -73,7 +72,17 @@ const resolvers = {
       const playlist = await CommunityPlaylist.findOneAndDelete({ name, spotifyPlaylistID});
       return playlist;
     },
+    updateUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await UserPlaylist.findOneAndUpdate(
+        { name, spotifyPlaylistID }, // filter object
+        { songs, imgURL, genre, upvotes, downvotes, user }, // update object
+        { new: true } // option object, `new: true` returns the updated document
+      );
+      return playlist;
+    }
+    
   }
 };
+
 
 module.exports = resolvers;

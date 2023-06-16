@@ -24,15 +24,6 @@ export const ADD_USER = gql`
   }
 `;
 
-// AddUser:
-// mutation {
-//   addUser(username: "joecodesatx7", email: "joecodesatx7@gmail.com", password: "pword1237") {
-//     _id
-//     username
-//     email
-//   }
-// }
-
 export const ADD_USER_PLAYLIST = gql`
 mutation AddUserPlaylist($name: String!, $spotifyPlaylistID: String!) {
   addUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistID) {
@@ -52,8 +43,11 @@ mutation DeleteUserPlaylist($name: String!, $spotifyPlaylistId: String!) {
 }
 `
 
-// export const UPDATE_USER_PLAYLIST = gql`
-
-//todo: updateuserplaylist mutation here
-
-// `
+export const UPDATE_USER_PLAYLIST = gql`
+mutation UpdateUserPlaylist($name: String!, $spotifyPlaylistId: String!) {
+  updateUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistId) {
+    name
+    spotifyPlaylistID
+  }
+}
+`;
