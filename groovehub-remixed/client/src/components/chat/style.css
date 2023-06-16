@@ -1,31 +1,40 @@
 .recievedMessage{
-    font-size: 30px;
-    padding-right: 15px;
-    padding-left: 10px;
-    background-color: red;
+    font-size: 18px;
+    background-color: #cc3b3b;
     margin-top: 5px;
+    padding: 15px;
     max-width: fit-content;
-    border-radius: 100px;
+    border-radius: 20px;
+    word-wrap:break-word; 
+    max-width:47%;
+    margin-left: 3px;
+    margin-bottom: 3px
 }
 
+body{
+    background-color: black;
+}
 .sentMessage{
-    font-size: 30px;
+    font-size: 18px;
     align-self: end;
-    padding-right: 30px;
-    background-color: #7fffd4;
+    padding: 15px;
+    background-color: #38a5c9;
     margin-top: 5px;
     padding-left: 15px;
-    border-radius: 100px;
-    display: flex;
-    flex-wrap: wrap;
+    border-radius: 20px;
+    word-wrap :break-word;
+    max-width: 47%;
 }
 
 #messageWrapper{
-    background-color: bisque;
+    background-color: aliceblue;
     border-radius: 20px;
     width: 40%;
     display:flex;
+    max-height: 600px;
     flex-direction: column;
+    /* height: 20%; */
+    overflow-y: scroll;
 }
 
 form{
@@ -36,9 +45,14 @@ form{
 }
 
 input{
-    width: 70%
+    width: 60%;
+    height: 40px;
+    margin-top: 10px;
 }
 
 button{
-    width: 30%
+    width: 30%;
+    margin-top: 10px;
+    background-color: #95e063;
+    font-size: x-large
 }
