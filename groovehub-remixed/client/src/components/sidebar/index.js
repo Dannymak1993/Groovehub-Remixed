@@ -30,6 +30,7 @@ const Sidebar = () => {
                     </li>
                     <li className="sidebar-menu-item">
                         <Link to="/authentication" onClick={toggleSidebar}>
+                        {/* <Link to="/login" onClick={toggleSidebar}> */}
                             Login
                         </Link>
                     </li>
