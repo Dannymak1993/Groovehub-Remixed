@@ -28,6 +28,7 @@ const typeDefs = gql`
     name: String
     songs: [String]
     spotifyPlaylistID: String
+    imgUrl: String
     genre: String
     upvotes: Int
     downvotes: Int
@@ -39,6 +40,7 @@ const typeDefs = gql`
     name: String
     songs: [String]
     spotifyPlaylistID: String
+    imgUrl: String
     genre: String
     upvotes: Int
     downvotes: Int
@@ -62,15 +64,20 @@ const typeDefs = gql`
     me: User
   }
 
-  type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
 
-    login(email: String!, password: String!): Auth
+ type Mutation {
+    addUser(username: String!, email: String!, password: String!): User
 
 
     addFeaturedPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): FeaturedPlaylist
-    addUserPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
-    addCommunityPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
+
+    addUserPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
+
+    deleteUserPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
+
+    addCommunityPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
+
+    deleteCommunityPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
   }
 `;
 

@@ -56,14 +56,22 @@ const resolvers = {
       const playlist = await FeaturedPlaylist.create({ name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user });
       return playlist;
     },
-    addUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user }, context) => {
-      const playlist = await UserPlaylist.create({ name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user });
+    addUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await UserPlaylist.create({ name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user });
       return playlist;
     },
-    addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user }, context) => {
-      const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user });
+    deleteUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await UserPlaylist.findOneAndDelete({ name, spotifyPlaylistID});
       return playlist;
-    }
+    },
+    addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user });
+      return playlist;
+    },
+    deleteCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await CommunityPlaylist.findOneAndDelete({ name, spotifyPlaylistID});
+      return playlist;
+    },
   }
 };
 
