@@ -1,6 +1,6 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import './style.css';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './style.css';
 
 
 // const Sidebar = () => {
@@ -96,9 +96,6 @@
 
 // export default Sidebar;
 
-import React, { useState } from 'react';
-import './style.css';
-
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeItem, setActiveItem] = useState(null);
@@ -142,7 +139,7 @@ const Sidebar = () => {
                     <li className="sidebar-menu-item">
                         <a href="/myplaylist" onClick={toggleSidebar}>
                             Your Playlists
-                        </a>
+                        </Link>
                     </li>
                     <li className="sidebar-menu-item">
                         <a href="/community" onClick={toggleSidebar}>

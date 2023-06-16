@@ -14,7 +14,7 @@ function LiveChat(props){
         const messageId = String(Date.now())
         const txt = document.querySelector("#message-field").value
         // todo: get username and add it to username const
-        const username = "sam"
+        const username = "currentUser"
         const newData = {
             text: txt,
             postedBy: username,
@@ -47,7 +47,7 @@ function LiveChat(props){
         <div>
             <form>
             <input id="message-field"/>
-            <button type="button" onClick={sendMessage}>Submit</button>
+            <button type="button" onClick={sendMessage}>Send</button>
             </form>
         </div>
     </div>
@@ -55,3 +55,6 @@ function LiveChat(props){
 }
 
 export default LiveChat
+
+// todo: add timestamps
+// todo: add live users
