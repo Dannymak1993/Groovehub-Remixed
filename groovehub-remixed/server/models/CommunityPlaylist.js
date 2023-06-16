@@ -11,6 +11,10 @@ const communityplaylistSchema = new Schema({
     type: String,
     required: true,
   },
+  imgUrl: {
+    type: String,
+    required: false,
+  },
   genre: {
     type: String,
     required: false

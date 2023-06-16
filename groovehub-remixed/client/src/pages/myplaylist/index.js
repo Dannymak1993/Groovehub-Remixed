@@ -45,9 +45,6 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         <div>
             <Grid className="grid">
 
-                
-
-
                 {userPlaylists.map((playlist, index) => (
                     <Cell
                         key={index}
