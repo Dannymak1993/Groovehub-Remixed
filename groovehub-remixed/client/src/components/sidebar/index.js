@@ -122,22 +122,24 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="sidebar-menu-item">
-                        <Link to="/authentication" onClick={toggleSidebar}>
-                        {/* <Link to="/login" onClick={toggleSidebar}> */}
-                        Spotify Auth
-                        </Link>
+                        <a href="/authentication" onClick={toggleSidebar}>
+                            Spotify Auth
+                        </a>
                     </li>
                     <li className="sidebar-menu-item">
-                        <Link to="/login" onClick={toggleSidebar}>Login!</Link>
+                        <a href="/login" onClick={toggleSidebar}>
+                            Login!
+                        </a>
                     </li>
                     <li className="sidebar-menu-item">
-                        <Link to="/signup" onClick={toggleSidebar}>Signup!</Link>
+                        <a href="/signup" onClick={toggleSidebar}>
+                            Signup!
+                        </a>
                     </li>
                     <li className="sidebar-menu-item">
-                        <Link to="/myplaylist" onClick={toggleSidebar}>
-
+                        <a href="/myplaylist" onClick={toggleSidebar}>
                             Your Playlists
-                        </Link>
+                        </a>
                     </li>
                     <li className="sidebar-menu-item">
                         <a href="/community" onClick={toggleSidebar}>

@@ -20,7 +20,7 @@ const EditPlaylist = () => {
             });
 
             // Redirect to the MyPlaylist page after saving the playlist
-            Navigate('/myplaylist');
+    
         } catch (error) {
             console.error(error, "hey look here");
         }
