@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { ADD_USER_PLAYLIST } from '../../utils/mutations';
 
+import GetMyPlaylists from '../myplaylist/GetMyPlaylist';
+
 const EditPlaylist = () => {
 
     const Navigate = useNavigate()
@@ -26,7 +28,7 @@ const EditPlaylist = () => {
 
     return (
         <div>
-            <h1>Edit Playlist</h1>
+            <h1>Import a playlist with its ID</h1>
             <input
                 type="text"
                 value={name}
@@ -40,7 +42,12 @@ const EditPlaylist = () => {
                 placeholder="Enter Spotify Playlist ID"
             />
             <button onClick={handleSavePlaylist}>Add Playlist</button>
-        </div>
+        
+        
+        <h1>Import From Your Spotify Playlist Library</h1>
+<GetMyPlaylists />
+
+    </div>
     );
 };
 

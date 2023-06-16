@@ -7,6 +7,7 @@ import { QUERY_USER_PLAYLIST } from '../../utils/queries.js';
 import { DELETE_USER_PLAYLIST } from '../../utils/mutations.js'
 import GetMyPlaylist from './GetMyPlaylist';
 
+
 const MyPlaylist = ({ setplaylistInfo }) => {
         
     const Navigate = useNavigate();
@@ -22,6 +23,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         setplaylistInfo({ playlist: spotifyPlaylistID, name: name });
         Navigate('/viewplaylist');
     };
+
 
     const handleEditPlaylist = (playlistId) => {
         Navigate(`/editplaylist/${playlistId}`);
@@ -39,13 +41,13 @@ const MyPlaylist = ({ setplaylistInfo }) => {
     //     }
     // };
 
-//this is using the GetMyPlaylist component that calls the api and renders the list of playlists.
     return (
         <div>
-{/* <button onClick={<}>Get My Playlists</button> */}
-            {/* <GetMyPlaylist/> */}
-
             <Grid className="grid">
+
+                
+
+
                 {userPlaylists.map((playlist, index) => (
                     <Cell
                         key={index}
