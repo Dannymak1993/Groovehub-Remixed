@@ -68,6 +68,7 @@ const typeDefs = gql`
  type Mutation {
     addUser(username: String!, email: String!, password: String!): User
 
+    login(email: String!, password: String!): Auth
 
     addFeaturedPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): FeaturedPlaylist
 
