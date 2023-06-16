@@ -13,15 +13,17 @@ const MyPlaylist = ({ setplaylistInfo }) => {
     const Navigate = useNavigate();
     const { loading, error, data } = useQuery(QUERY_USER_PLAYLIST);
     const userPlaylists = data?.userPlaylists || [];
-    // const [deleteUserPlaylist] = useMutation(DELETE_USER_PLAYLIST);
+    const [deleteUserPlaylist] = useMutation(DELETE_USER_PLAYLIST);
 
     const handleCreatePlaylist = () => {
         Navigate('/editplaylist');
     };
 
-    const handlesubmit = (spotifyPlaylistID, name, genre) => {
+    const handlesubmit = (event, spotifyPlaylistID, name, genre) => {
+        console.log(event)
         setplaylistInfo({ playlist: spotifyPlaylistID, name: name });
         Navigate('/viewplaylist');
+        event.stopPropagation();
     };
 
 
@@ -29,17 +31,17 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         Navigate(`/editplaylist/${playlistId}`);
     };
 
-    // const handleDeletePlaylist = async (playlistId) => {
-    //     try {
-    //         await deleteUserPlaylist({
-    //             variables: { playlistId },
-    //             refetchQueries: [{ query: QUERY_USER_PLAYLIST }]
-    //         });
-    //         // Perform any additional actions after deletion if needed
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+    const handleDeletePlaylist = async (name, spotifyPlaylistID) => {
+        console.log(name, spotifyPlaylistID)
+        try {
+            await deleteUserPlaylist({
+                variables: { name: name, spotifyPlaylistId: spotifyPlaylistID },
+            });
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div>
@@ -50,8 +52,10 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                         key={index}
                         className={`grid-item ${playlist.genre}`}
                         data-genre={playlist.genre}
-                        onClick={() =>
+                        // style={`background:${playlist.imgURL}`}
+                        onClick={(event) =>
                             handlesubmit(
+                                event,
                                 playlist.spotifyPlaylistID,
                                 playlist.name,
                                 playlist.genre
@@ -67,13 +71,15 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                             </button>
                             <button
                                 className="delete-button"
-                                // onClick={() => handleDeletePlaylist(playlist._id)}
+                            onClick={() => handleDeletePlaylist(playlist.name, playlist.spotifyPlaylistID)}
                             >
                                 Delete
                             </button>
                             <div className="gallery-name">{playlist.name}</div>
                         </div>
                     </Cell>
+                
+                  
                 ))}
                 <Cell
                     className="grid-item create-cell"

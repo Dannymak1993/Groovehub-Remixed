@@ -27,7 +27,6 @@ const AppRoutes = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/spotifyAuth" element={<Auth />} />
-                {/* <Route path="/login" element={<Login />} /> */}
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/viewplaylist" element={<ViewPlaylist playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
                 {/*<Route path="/community" element={<Community />} />*/}
@@ -43,7 +42,6 @@ const AppRoutes = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/spotifyAuth" element={<Auth />} />
-                {/* <Route path="/login" element={<Login />} /> */}
                 <Route path="/callback" element={<Callback />} />
                 <Route path="*" element={<Login />}/>
             </Routes>
