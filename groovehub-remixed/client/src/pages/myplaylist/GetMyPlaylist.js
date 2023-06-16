@@ -1,12 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import './style.css';
 import axios from 'axios'
-import { Grid, Cell } from 'react-foundation';
+import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+import { ADD_USER_PLAYLIST } from '../../utils/mutations';
 
 //this component calls the api and then returns the data
 const GetMyPlaylists = () => {
+    const Navigate = useNavigate()
 const [playlists, setPlaylist] = useState();
+const [name, setName] = useState('');
+const [imgUrl, setImgUrl] = useState('');
+const [spotifyPlaylistID, setSpotifyPlaylistID] = useState('');
+const [addUserPlaylist] = useMutation(ADD_USER_PLAYLIST);
 console.log(playlists);
+
+const handleSavePlaylist = async () => {
+    try {
+        // Call the mutation to save the playlist to the database
+        await addUserPlaylist({
+            variables: { name, spotifyPlaylistID, imgUrl },
+        });
+
+        // Redirect to the MyPlaylist page after saving the playlist
+        // Navigate('/myplaylist');
+    } catch (error) {
+        console.error(error, "hey look here");
+    }
+};
 
 
 useEffect(() => {
@@ -39,24 +60,36 @@ useEffect(() => {
     fetchPlaylist();
 }, []); 
 
-
+if(!playlists){
+    <GetMyPlaylists />
+} else {
 return(
     
     <div>
-    {playlists ? (
-      playlists.map((playlist, index) => (
-        <Cell key={index}>
-          <h1>{playlist.name}</h1>
-          <h2>{playlist.id}</h2>
-          <img src={playlist.images[0].url}/>
-        </Cell>
-      ))
-    ) : (
-      <p>Loading Playlists...</p>
-    )}
+    <select
+  value={spotifyPlaylistID}
+  onChange={(e) => {
+    const selectedId = e.target.value;
+    const selectedName = playlists.find(playlist => playlist.id === selectedId).name;
+    const selectedImage = playlists.find(playlist => playlist.id === selectedId).images[0].url
+    
+    console.log("Selected option:", selectedId, selectedName, selectedImage);
+    setSpotifyPlaylistID(selectedId);
+setName(selectedName);
+setImgUrl(selectedImage);
+  }}
+>
+  <option value="">Select a Playlist Name</option>
+  {playlists.map((playlist, index) => (
+    <option key={index} value={playlist.id}>
+      {playlist.name}: {playlist.images[0].url}
+    </option>
+  ))}
+</select>
+<button onClick={handleSavePlaylist}>Add Playlist</button>
+
   </div>
 )
-
+  }
 }
-
 export default GetMyPlaylists;
