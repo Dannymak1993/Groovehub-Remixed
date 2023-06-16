@@ -11,11 +11,12 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+// Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
 });
 
-
+// Construct request middleware that will attach the JWT token to every request as an `authorization` heade
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
@@ -40,6 +41,7 @@ function App() {
       <div className="App">
         <Header />
         <Sidebar />
+        {/* injecting approutes component into app */}
         <AppRoutes />
       </div>
     </ApolloProvider>

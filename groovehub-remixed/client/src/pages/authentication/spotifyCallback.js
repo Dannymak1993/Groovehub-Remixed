@@ -26,7 +26,8 @@ const Callback = () => {
     
     }, [navigate])
 
-   
+   // Return something that can be rendered
+   return null;
     
 }; 
 export default Callback;

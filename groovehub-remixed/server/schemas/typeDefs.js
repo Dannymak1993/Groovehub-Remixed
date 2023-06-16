@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express');
 
+
 const typeDefs = gql`
   type User {
     _id: ID
@@ -46,6 +47,11 @@ const typeDefs = gql`
     user: User
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
     user(_id: ID!): User
@@ -55,10 +61,13 @@ const typeDefs = gql`
     userPlaylist(_id: ID!): UserPlaylist
     communityPlaylists: [CommunityPlaylist]
     communityPlaylist(_id: ID!): CommunityPlaylist
+    me: User
   }
+
 
  type Mutation {
     addUser(username: String!, email: String!, password: String!): User
+
 
     addFeaturedPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): FeaturedPlaylist
 
