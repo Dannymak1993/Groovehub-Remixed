@@ -7,7 +7,7 @@ import { ADD_USER_PLAYLIST } from '../../utils/mutations';
 
 //this component calls the api and then returns the data
 const GetMyPlaylists = () => {
-    const Navigate = useNavigate()
+const Navigate = useNavigate()
 const [playlists, setPlaylist] = useState();
 const [name, setName] = useState('');
 const [imgUrl, setImgUrl] = useState('');
