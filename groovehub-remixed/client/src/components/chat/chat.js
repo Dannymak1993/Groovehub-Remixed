@@ -22,7 +22,9 @@ function LiveChat(props){
         const newData = {
             text: txt,
             postedBy: username,
-            id: String(Date.now())
+            // id: String(Date.now())
+            id: messageId,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         }
         await setDoc(doc(db,messageId), newData)
         document.querySelector("#message-field").value = ""
@@ -45,7 +47,7 @@ function LiveChat(props){
     <div>
         <div id="messageWrapper">
           {messages.map((message) => (
-            <div className={(message.postedBy==="currentUser")?'sentMessage':"recievedMessage"} key={message.text}>{message.postedBy}: {message.text}</div>
+            <div className={(message.postedBy==="currentUser")?'sentMessage':"recievedMessage"} key={message.id}>{message.postedBy}: {message.text}</div>
           ))}
         </div>
         <div>
