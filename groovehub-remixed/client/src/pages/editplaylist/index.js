@@ -1,53 +1,57 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
-import { ADD_USER_PLAYLIST } from '../../utils/mutations';
-
-import GetMyPlaylists from '../myplaylist/GetMyPlaylist';
+import { UPDATE_USER_PLAYLIST } from '../../utils/mutations';
+import './style.css';
 
 const EditPlaylist = () => {
+    const { playlistId } = useParams();
+    const navigate = useNavigate();
 
-    const Navigate = useNavigate()
-    const [name, setName] = useState('');
-    const [spotifyPlaylistID, setSpotifyPlaylistID] = useState('');
-    const [addUserPlaylist] = useMutation(ADD_USER_PLAYLIST);
+    const [newPlaylistName, setNewPlaylistName] = useState('');
 
-    const handleSavePlaylist = async () => {
+    const handlePlaylistNameChange = (event) => {
+        setNewPlaylistName(event.target.value);
+    };
+
+    const [updateUserPlaylist] = useMutation(UPDATE_USER_PLAYLIST);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        console.log('Playlist ID:', playlistId);
+        console.log('New Playlist Name:', newPlaylistName);
+        
         try {
-            // Call the mutation to save the playlist to the database
-            await addUserPlaylist({
-                variables: { name, spotifyPlaylistID },
+            await updateUserPlaylist({
+                variables: {
+                    spotifyPlaylistID: playlistId,
+                    name: newPlaylistName,
+                },
             });
 
-            // Redirect to the MyPlaylist page after saving the playlist
-    
+            setNewPlaylistName('');
+            navigate('/myplaylist');
+            window.location.reload();
         } catch (error) {
-            console.error(error, "hey look here");
+            console.log(error);
         }
     };
 
     return (
-        <div>
-            <h1>Import a playlist with its ID</h1>
-            <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter Playlist Name"
-            />
-            <input
-                type="text"
-                value={spotifyPlaylistID}
-                onChange={(e) => setSpotifyPlaylistID(e.target.value)}
-                placeholder="Enter Spotify Playlist ID"
-            />
-            <button onClick={handleSavePlaylist}>Add Playlist</button>
-        
-        
-        <h1>Import From Your Spotify Playlist Library</h1>
-<GetMyPlaylists />
-
-    </div>
+        <div className="edit-playlist-container">
+            <form onSubmit={handleSubmit}>
+                <label>
+                    New Playlist Name:
+                    <input
+                        type="text"
+                        value={newPlaylistName}
+                        onChange={handlePlaylistNameChange}
+                    />
+                </label>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     );
 };
 

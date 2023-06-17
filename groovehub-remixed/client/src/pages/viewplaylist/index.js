@@ -7,7 +7,7 @@ const ViewPlaylist = ({ playlistInfo }) => {
     const genre = playlistInfo.genre;
     return (
         <div className="view-playlist">
-        <h1 Class="genre">{genre}</h1>
+        <h1 className="genre">{genre}</h1>
             <div className="center-container">
         <Playlist playlistInfo={playlistInfo} />
         <LiveChat chatName = "anime" />
