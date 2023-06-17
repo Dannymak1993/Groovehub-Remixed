@@ -1,6 +1,4 @@
 import React from 'react';
-// import bannerImage from '../../images/Banner.jpg';
-// import logo from '../../images/Logo.jpg';
 import './style.css';
 
 const Header = () => {
@@ -8,8 +6,10 @@ const Header = () => {
         <header className="banner">
             <img src='/images/Banner.jpg' alt="Banner" />
             <div className="overlay">
+                <a href='/'>
                 <img src='/images/Logo.jpg' alt="Logo" className="logo" />
-                <h1 className="text">Groovehub</h1>
+                </a>
+                <h1 className="text">Groovehub Remixed</h1>
             </div>
         </header>
     );

@@ -63,6 +63,7 @@ function LiveChat(props) {
   return (
 
     <div>
+
       <div id="messageWrapper">
         {messages.map((message) => (
           <div className={(message.postedBy === "currentUser") ? 'sentMessage' : "recievedMessage"} key={message.id}>{message.postedBy}: {message.text}</div>
@@ -74,6 +75,7 @@ function LiveChat(props) {
           <button type="button" onClick={sendMessage}>Send</button>
         </form>
       </div>
+
     </div>
   );
 }

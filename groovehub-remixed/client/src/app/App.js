@@ -39,10 +39,13 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <Header />
-        <Sidebar />
-        {/* injecting approutes component into app */}
-        <AppRoutes />
+        <Header className="header" />
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="content">
+          <AppRoutes />
+        </div>
       </div>
     </ApolloProvider>
   );
