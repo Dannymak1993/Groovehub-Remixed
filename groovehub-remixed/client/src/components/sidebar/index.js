@@ -1,6 +1,6 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import './style.css';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './style.css';
 
 
 // const Sidebar = () => {
@@ -96,9 +96,6 @@
 
 // export default Sidebar;
 
-import React, { useState } from 'react';
-import './style.css';
-
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeItem, setActiveItem] = useState(null);
@@ -125,20 +122,22 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="sidebar-menu-item">
-                        <Link to="/authentication" onClick={toggleSidebar}>
-                        {/* <Link to="/login" onClick={toggleSidebar}> */}
-                        Spotify Auth
-                        </Link>
+                        <a href="/authentication" onClick={toggleSidebar}>
+                            Spotify Auth
+                        </a>
                     </li>
                     <li className="sidebar-menu-item">
-                        <Link to="/login" onClick={toggleSidebar}>Login!</Link>
+                        <a href="/login" onClick={toggleSidebar}>
+                            Login!
+                        </a>
                     </li>
                     <li className="sidebar-menu-item">
-                        <Link to="/signup" onClick={toggleSidebar}>Signup!</Link>
+                        <a href="/signup" onClick={toggleSidebar}>
+                            Signup!
+                        </a>
                     </li>
                     <li className="sidebar-menu-item">
-                        <Link to="/myplaylist" onClick={toggleSidebar}>
-
+                        <a href="/myplaylist" onClick={toggleSidebar}>
                             Your Playlists
                         </a>
                     </li>

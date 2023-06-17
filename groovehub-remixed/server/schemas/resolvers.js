@@ -64,6 +64,7 @@ const resolvers = {
       const playlist = await UserPlaylist.findOneAndDelete({ name, spotifyPlaylistID});
       return playlist;
     },
+    //todo updateUserPlaylist:
     addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
       const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user });
       return playlist;

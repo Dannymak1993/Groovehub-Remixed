@@ -66,7 +66,7 @@ const typeDefs = gql`
 
 
  type Mutation {
-    addUser(username: String!, email: String!, password: String!): User
+    addUser(username: String!, email: String!, password: String!): Auth
 
     login(email: String!, password: String!): Auth
 
@@ -79,6 +79,8 @@ const typeDefs = gql`
     addCommunityPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
 
     deleteCommunityPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
+
+    //todo: add typedef for updateuserplaylist
   }
 `;
 

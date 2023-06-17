@@ -18,7 +18,7 @@ console.log(playlists);
 const handleSavePlaylist = async () => {
     try {
         // Call the mutation to save the playlist to the database
-        await addUserPlaylist({
+        const{data} = await addUserPlaylist({
             variables: { name, spotifyPlaylistID, imgUrl },
         });
 
