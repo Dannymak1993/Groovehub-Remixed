@@ -16,7 +16,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
     const [deleteUserPlaylist] = useMutation(DELETE_USER_PLAYLIST);
 
     const handleCreatePlaylist = () => {
-        Navigate('/editplaylist');
+        Navigate('/addplaylist');
     };
 
     const handlesubmit = (event, spotifyPlaylistID, name, genre) => {
@@ -26,14 +26,13 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         event.stopPropagation();
     };
 
-
-    const handleEditPlaylist = (playlistId) => {
-
-        //todo: add edit function code here
-        Navigate(`/editplaylist/${playlistId}`);
+    const handleEditPlaylist = (name, spotifyPlaylistID, event) => {
+        event.stopPropagation();
+        Navigate(`/editplaylist/${spotifyPlaylistID}`);
     };
 
-    const handleDeletePlaylist = async (name, spotifyPlaylistID) => {
+    const handleDeletePlaylist = async ( name, spotifyPlaylistID, event) => {
+        event.stopPropagation();
         console.log(name, spotifyPlaylistID)
         try {
             await deleteUserPlaylist({
@@ -67,16 +66,33 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                         <div className="gallery-content">
                             <button
                                 className="edit-button"
-                                onClick={() => handleEditPlaylist(playlist._id)}
-                                //todo: change edit playlist 
+                                onClick={(event) => 
+                                    handleEditPlaylist(
+                                    playlist.name,
+                                    playlist.spotifyPlaylistID,
+                                    event)}
                             >
                                 Edit
                             </button>
                             <button
                                 className="delete-button"
-                            onClick={() => handleDeletePlaylist(playlist.name, playlist.spotifyPlaylistID)}
+                            onClick={(event) => 
+                                handleDeletePlaylist(
+                                    playlist.name, 
+                                    playlist.spotifyPlaylistID,
+                                    event)}
                             >
                                 Delete
+                            </button>
+                            <button
+                                className="share-button"
+                                // onClick={(event) =>
+                                //     handleSharePlaylist(
+                                //         playlist.name,
+                                //         playlist.spotifyPlaylistID,
+                                //         event)}
+                            >
+                                Share
                             </button>
                             <div className="gallery-name">{playlist.name}</div>
                         </div>

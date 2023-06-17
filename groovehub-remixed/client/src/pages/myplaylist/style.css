@@ -173,3 +173,40 @@
         transform: translate(-50%, -50%);
         text-align: center;
 }
+
+.playlist-select {
+    width: 400px;
+    /* Adjust the width to your desired value */
+}
+
+.edit-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.share-button {
+    position: absolute;
+    top: 50px;
+    left: calc(50% + 80px);
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(68, 157, 68);
+    /* Green background color */
+    border: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.share-button:hover {
+    background-color: rgb(119, 168, 119);
+    /* Darker green on hover */
+}

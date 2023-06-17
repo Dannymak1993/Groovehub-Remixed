@@ -42,33 +42,16 @@ mutation DeleteUserPlaylist($spotifyPlaylistId: String!) {
 }
 `
 
-//constructs the mutation `Update_USER_PLAYLIST`:
 export const UPDATE_USER_PLAYLIST = gql`
-  mutation UpdateUserPlaylist(
-    $spotifyPlaylistID: String!
-    $name: String
-    $imgURL: String
-    $genre: String
-    $upvotes: Int
-    $downvotes: Int
-    $user: ID
+mutation UpdateUserPlaylist(
+  $spotifyPlaylistID: String!
+  $name: String
   ) {
     updateUserPlaylist(
-      spotifyPlaylistID: $spotifyPlaylistID
-      name: $name
-      imgURL: $imgURL
-      genre: $genre
-      upvotes: $upvotes
-      downvotes: $downvotes
-      user: $user
+    spotifyPlaylistID: $spotifyPlaylistID
+    name: $name
     ) {
-      _id
       name
-      imgURL
-      genre
-      upvotes
-      downvotes
-      user
-    }
+       }
   }
 `;
