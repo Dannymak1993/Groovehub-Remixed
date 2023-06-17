@@ -74,13 +74,13 @@ const typeDefs = gql`
 
     addUserPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
 
-    deleteUserPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
+    addCommunityPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
+    
+    deleteUserPlaylist(spotifyPlaylistID: String!): UserPlaylist
+    deleteCommunityPlaylist(spotifyPlaylistID: String!): CommunityPlaylist
 
-    addCommunityPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
+    updateUserPlaylist(spotifyPlaylistID: String!, name: String, songs: [String], imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
 
-    deleteCommunityPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
-
-    //todo: add typedef for updateuserplaylist
   }
 `;
 

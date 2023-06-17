@@ -24,15 +24,6 @@ export const ADD_USER = gql`
   }
 `;
 
-// AddUser:
-// mutation {
-//   addUser(username: "joecodesatx7", email: "joecodesatx7@gmail.com", password: "pword1237") {
-//     _id
-//     username
-//     email
-//   }
-// }
-
 export const ADD_USER_PLAYLIST = gql`
 mutation AddUserPlaylist($name: String!, $spotifyPlaylistID: String!) {
   addUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistID) {
@@ -44,16 +35,40 @@ mutation AddUserPlaylist($name: String!, $spotifyPlaylistID: String!) {
 
 
 export const DELETE_USER_PLAYLIST = gql`
-mutation DeleteUserPlaylist($name: String!, $spotifyPlaylistId: String!) {
-  deleteUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistId) {
-    name
+mutation DeleteUserPlaylist($spotifyPlaylistId: String!) {
+  deleteUserPlaylist(spotifyPlaylistID: $spotifyPlaylistId) {
     spotifyPlaylistID
   }
 }
 `
 
-// export const UPDATE_USER_PLAYLIST = gql`
-
-//todo: updateuserplaylist mutation here
-
-// `
+//constructs the mutation `Update_USER_PLAYLIST`:
+export const UPDATE_USER_PLAYLIST = gql`
+  mutation UpdateUserPlaylist(
+    $spotifyPlaylistID: String!
+    $name: String
+    $imgURL: String
+    $genre: String
+    $upvotes: Int
+    $downvotes: Int
+    $user: ID
+  ) {
+    updateUserPlaylist(
+      spotifyPlaylistID: $spotifyPlaylistID
+      name: $name
+      imgURL: $imgURL
+      genre: $genre
+      upvotes: $upvotes
+      downvotes: $downvotes
+      user: $user
+    ) {
+      _id
+      name
+      imgURL
+      genre
+      upvotes
+      downvotes
+      user
+    }
+  }
+`;

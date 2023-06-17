@@ -60,20 +60,38 @@ const resolvers = {
       const playlist = await UserPlaylist.create({ name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user });
       return playlist;
     },
-    deleteUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
-      const playlist = await UserPlaylist.findOneAndDelete({ name, spotifyPlaylistID});
-      return playlist;
-    },
-    //todo updateUserPlaylist:
     addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
       const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user });
       return playlist;
     },
-    deleteCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
-      const playlist = await CommunityPlaylist.findOneAndDelete({ name, spotifyPlaylistID});
+    deleteUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await UserPlaylist.findOneAndDelete({ spotifyPlaylistID });
       return playlist;
     },
+    deleteCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await CommunityPlaylist.findOneAndDelete({ spotifyPlaylistID });
+      return playlist;
+    },
+    updateUserPlaylist: async (parent, { spotifyPlaylistID, name, songs, imgURL, genre, upvotes, downvotes, user }, context) => {
+      const update = {};
+      if (name) update.name = name;
+      if (songs) update.songs = songs;
+      if (imgURL) update.imgURL = imgURL;
+      if (genre) update.genre = genre;
+      if (upvotes !== undefined) update.upvotes = upvotes;
+      if (downvotes !== undefined) update.downvotes = downvotes;
+      if (user) update.user = user;
+      
+      const playlist = await UserPlaylist.findOneAndUpdate(
+        { spotifyPlaylistID }, // filter object
+        { $set: update }, // update object
+        { new: true } // option object, `new: true` returns the updated document
+      );
+    
+      return playlist;
+    }
   }
 };
+
 
 module.exports = resolvers;
