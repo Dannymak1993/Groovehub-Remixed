@@ -89,8 +89,37 @@ const resolvers = {
       );
     
       return playlist;
+    },
+    
+    addFavoritePlaylist: async (parent, { playlistID, name, imageURL }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in to add a favorite playlist');
+      }
+      
+      // Find the user by their ID
+      const user = await User.findById(context.user._id);
+      
+      if (!user) {
+        throw new Error('User not found');
+      }
+      
+      // Create the new favorite playlist object
+      const favoritePlaylist = {
+        playlistID,
+        name,
+        imageURL
+      };
+      
+      // Add the favorite playlist to the user's favorites array
+      user.favorites.push(favoritePlaylist);
+      
+      // Save the updated user object
+      await user.save();
+      
+      return user;
     }
-  }
+  },
+    
 };
 
 

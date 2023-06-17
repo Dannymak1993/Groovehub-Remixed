@@ -55,3 +55,17 @@ mutation UpdateUserPlaylist(
        }
   }
 `;
+
+export const ADD_FAVORITE_PLAYLIST = gql`
+  mutation AddFavoritePlaylist($playlistID: String!, $name: String!, $imageURL: String!) {
+    addFavoritePlaylist(playlistID: $playlistID, name: $name, imageURL: $imageURL) {
+      _id
+      username
+      favorites {
+        playlistID
+        name
+        imageURL
+      }
+    }
+  }
+`;

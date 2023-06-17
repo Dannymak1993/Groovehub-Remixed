@@ -7,10 +7,17 @@ const typeDefs = gql`
     username: String
     email: String
     spotifyID: String
+    favorites: [FavoritePlaylist]  # For favoriting playlists
     featuredPlaylists: [FeaturedPlaylist]
     userPlaylists: [UserPlaylist]
     communityPlaylists: [CommunityPlaylist]
   }
+
+  type FavoritePlaylist {  # For favoriting playlists
+  playlistID: String
+  name: String
+  imageURL: String
+}
 
   type FeaturedPlaylist {
     _id: ID
@@ -80,6 +87,9 @@ const typeDefs = gql`
     deleteCommunityPlaylist(spotifyPlaylistID: String!): CommunityPlaylist
 
     updateUserPlaylist(spotifyPlaylistID: String!, name: String, songs: [String], imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
+
+    #add favorite paylist mutation
+    addFavoritePlaylist(playlistID: String!, name: String!, imageURL: String!): User
 
   }
 `;
