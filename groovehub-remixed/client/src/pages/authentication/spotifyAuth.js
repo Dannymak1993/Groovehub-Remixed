@@ -11,6 +11,7 @@ const SpotifyAuth = () => {
         const responseType= 'token';
 
         //Generating the authorization URL
+        //This includes spootify scopes, which are permissions that the user grants to the app
         const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=playlist-read-private`;
 
         window.location.href = authorizeUrl;
