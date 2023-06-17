@@ -35,19 +35,40 @@ mutation AddUserPlaylist($name: String!, $spotifyPlaylistID: String!) {
 
 
 export const DELETE_USER_PLAYLIST = gql`
-mutation DeleteUserPlaylist($name: String!, $spotifyPlaylistId: String!) {
-  deleteUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistId) {
-    name
+mutation DeleteUserPlaylist($spotifyPlaylistId: String!) {
+  deleteUserPlaylist(spotifyPlaylistID: $spotifyPlaylistId) {
     spotifyPlaylistID
   }
 }
 `
 
+//constructs the mutation `Update_USER_PLAYLIST`:
 export const UPDATE_USER_PLAYLIST = gql`
-mutation UpdateUserPlaylist($name: String!, $spotifyPlaylistId: String!) {
-  updateUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistId) {
-    name
-    spotifyPlaylistID
+  mutation UpdateUserPlaylist(
+    $spotifyPlaylistID: String!
+    $name: String
+    $imgURL: String
+    $genre: String
+    $upvotes: Int
+    $downvotes: Int
+    $user: ID
+  ) {
+    updateUserPlaylist(
+      spotifyPlaylistID: $spotifyPlaylistID
+      name: $name
+      imgURL: $imgURL
+      genre: $genre
+      upvotes: $upvotes
+      downvotes: $downvotes
+      user: $user
+    ) {
+      _id
+      name
+      imgURL
+      genre
+      upvotes
+      downvotes
+      user
+    }
   }
-}
 `;
