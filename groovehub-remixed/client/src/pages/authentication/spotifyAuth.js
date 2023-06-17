@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 
 //This starts the authorization process for spotify when the user clicks on the spotify log in button. 
 
-const Auth = () => {
+const SpotifyAuth = () => {
 
     useEffect(() => {
         const clientId= 'f770e82c1a024fff81d38b74f6863a9e';
@@ -19,6 +19,6 @@ const Auth = () => {
     // return <div>Redirecting to Spotify login.....</div>;
 };
 
-export default Auth;
+export default SpotifyAuth;
 
 //This leads to the spotifyCallback.js
