@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
+import SpotifyAuth from '../authentication/spotifyAuth'
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -49,7 +50,7 @@ const Login = (props) => {
             {data ? (
               <p>
                 Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                <Link to={SpotifyAuth}>back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

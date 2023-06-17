@@ -4,6 +4,8 @@
 // import { LOGIN_USER } from '../../utils/mutations';
 import React from 'react';
 import Button from '@mui/material/Button';
+import Login from '../login/Login';
+import Signup from '../signup/Signup';
 // import UserAuth from '../../utils/auth';
 
 
@@ -88,7 +90,7 @@ import Button from '@mui/material/Button';
 
 export const Authentication = () => {
     function handleLogin() {
-        window.location.href = 'http://localhost:3000/login';
+        window.location.href = 'http://localhost:3000/spotifyAuth';
     }
 
     return (
@@ -97,6 +99,9 @@ export const Authentication = () => {
             <Button variant="contained" color="primary" onClick={handleLogin}>
                 Begin Spotify Authentication
             </Button>
+
+            <Signup />
+            <Login />
         </div>
     );
 }
