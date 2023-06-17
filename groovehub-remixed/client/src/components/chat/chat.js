@@ -49,9 +49,9 @@ function LiveChat(props){
           ))}
         </div>
         <div>
-            <form>
+            <form className = "form-container">
             <input id="message-field"/>
-            <button type="button" onClick={sendMessage}>Send</button>
+            <button type="button" id="message-btn" onClick={sendMessage}>Send</button>
             </form>
         </div>
     </div>

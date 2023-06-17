@@ -1,11 +1,3 @@
-body {
-  margin-left: 200px;
-  width: 1700px;
-  -ms-scroll-rails: none;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  background: linear-gradient(to bottom, #df5c28, #c9b831);
-}
-
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -30,6 +22,7 @@ body {
   grid-gap: 40px;
   justify-content: center;
   align-items: center;
+  justify-items: end;
 }
 
 .grid::after {
@@ -41,8 +34,9 @@ body {
 .grid-item {
   box-sizing: border-box;
   text-align: center;
-  width: 220px;
-  height: 220px;
+  width: 30%;
+  height: auto;
+  max-width: 220px;
   background: #BBB;
   border-radius: 50%;
   position: relative;

@@ -1,11 +1,12 @@
 header {
     height: 150px;
-    /* Set the desired height */
+    width: 100vw;
+
 }
 
 header img {
     height: 100%;
-    width:110%;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -25,14 +26,14 @@ header img {
     width: 100px;
     margin-left: 70px;
     margin-top: 10px;
-
 }
 
 .text {
     color: rgb(0, 0, 0);
     font-size: 40px;
-    margin-top:5px;
+    margin-top: -29px;
     justify-content: center;
     display: flex;
-    margin-right: 90px;
+    margin-left: 70px;
+    font-family: 'Darumadrop One';
 }
