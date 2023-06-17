@@ -1,0 +1,14 @@
+.genre {
+    display:flex;
+    justify-content: center;
+    margin-left: 70px;
+}
+
+.center-container {
+    padding-left: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    /* Add any additional styles if needed */
+}

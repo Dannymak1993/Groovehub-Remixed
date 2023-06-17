@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './style.css';
 
 
@@ -78,10 +77,8 @@ const Sidebar = () => {
                                     <p>Sam Halloum</p>
                                 </a>
                             </li>
-                            <div>
-                                <img className="logo" src="/images/Logo.jpg" alt="Groovehub Logo" />
                                 <p>&copy; 2023</p>
-                            </div>
+                            
                         </ul>
                     </li>
                 </ul>

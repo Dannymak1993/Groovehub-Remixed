@@ -3,6 +3,7 @@
 // import { useMutation } from '@apollo/client';
 // import { LOGIN_USER } from '../../utils/mutations';
 import React from 'react';
+import './style.css';
 import Button from '@mui/material/Button';
 import Login from '../login/Login';
 import Signup from '../signup/Signup';
@@ -94,9 +95,9 @@ export const Authentication = () => {
     }
 
     return (
-        <div>
-            <h1>Welcome to GrooveHub Remixed</h1>
-            <Button variant="contained" color="primary" onClick={handleLogin}>
+        <div className ="login-container">
+            <h1>Welcome!</h1>
+            <Button class="auth-btn" variant="contained" color="primary" onClick={handleLogin}>
                 Begin Spotify Authentication
             </Button>
 
