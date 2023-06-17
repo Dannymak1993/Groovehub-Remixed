@@ -88,7 +88,7 @@ import Button from '@mui/material/Button';
 
 export const Authentication = () => {
     function handleLogin() {
-        window.location.href = 'http://localhost:3000/login';
+        window.location.href = 'http://localhost:3000/spotifyAuth';
     }
 
     return (
