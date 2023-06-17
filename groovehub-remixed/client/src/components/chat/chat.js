@@ -7,6 +7,10 @@ import './style.css'
 function LiveChat(props){
     const [messages, setMessages] = useState([])
     // todo: should be able to swap out "anime" for each unique instance. Add prop here
+    function scrollToBottom() {
+        const chat = document.querySelector('#messageWrapper');
+        chat.scrollTop = chat.scrollHeight;
+      }
     const chatName = props.chatName
     const db = collection(firestore,chatName)
     const sendMessage = async () => {
@@ -22,18 +26,18 @@ function LiveChat(props){
         }
         await setDoc(doc(db,messageId), newData)
         document.querySelector("#message-field").value = ""
+        scrollToBottom()
     }
 
     // todo: fix this useEffect so it doesn't make 100 reads to the db a second when the dependencies array is removed
     // fetches messages on webpage reload
-    useEffect(()=>{
-        const getMessages = async () => {
+    // todo: setTimeout
+    const getMessages = async () => {
             const data = await getDocs(db);
             const messages = data.docs.map((doc) => doc.data());
             setMessages(messages);
             }
-        getMessages()
-    },[])
+     setTimeout(getMessages, 2000)
     // todo: the dependency array makes it so you can only see new messages
 
     return (

@@ -3,13 +3,13 @@ import {getFirestore} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB9PmbxDlA-YXefj_D4yeNDtJRv3_5gqGg",
-  authDomain: "ghchat-e136a.firebaseapp.com",
-  projectId: "ghchat-e136a",
-  storageBucket: "ghchat-e136a.appspot.com",
-  messagingSenderId: "786998124135",
-  appId: "1:786998124135:web:d43799d928706d6dd07ec2",
-  measurementId: "G-Q401PTB131"
+  apiKey: "AIzaSyAyDccOvuM9mXRAGHFa7xWGOyK3C9DfblY",
+  authDomain: "chatgh-61b36.firebaseapp.com",
+  projectId: "chatgh-61b36",
+  storageBucket: "chatgh-61b36.appspot.com",
+  messagingSenderId: "752740105514",
+  appId: "1:752740105514:web:7cb3214bfe5ce5d0a8f253",
+  measurementId: "G-CKR46XD120"
 };
 
   const app = initializeApp(firebaseConfig);
