@@ -19,10 +19,10 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         Navigate('/addplaylist');
     };
 
-    const handlesubmit = (event, spotifyPlaylistID, name, genre) => {
+    const handlesubmit = (event, playlistId, name, genre) => {
         console.log(event)
-        setplaylistInfo({ playlist: spotifyPlaylistID, name: name });
-        Navigate('/viewplaylist');
+        setplaylistInfo({ playlist: playlistId, name: name });
+        Navigate(`/viewplaylist/${playlistId}`);
         event.stopPropagation();
     };
 

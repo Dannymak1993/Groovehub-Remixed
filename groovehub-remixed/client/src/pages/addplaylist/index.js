@@ -19,6 +19,8 @@ const AddPlaylist = () => {
                 variables: { name, spotifyPlaylistID },
             });
 
+            Navigate('/myplaylist');
+            window.location.reload();
             // Redirect to the MyPlaylist page after saving the playlist
 
         } catch (error) {
@@ -27,17 +29,17 @@ const AddPlaylist = () => {
     };
 
     return (
-        <div class="edit-container">
+        <div className="edit-container">
             <h1>Import your playlist with its ID</h1>
             <input
-                class="edit-input"
+                className="edit-input"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter Playlist Name"
             />
             <input
-                class="edit-input"
+                className="edit-input"
                 type="text"
                 value={spotifyPlaylistID}
                 onChange={(e) => setSpotifyPlaylistID(e.target.value)}

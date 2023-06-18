@@ -66,7 +66,7 @@ const GetMyPlaylists = () => {
   } else {
     return (
 
-      <div class="edit-container">
+      <div className="edit-container">
         <select
           className="playlist-select"
           value={spotifyPlaylistID}
