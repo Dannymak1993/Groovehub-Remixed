@@ -2,6 +2,13 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const favoritePlaylistSchema = new Schema({
+  spotifyPlaylistID: String,
+  imgUrl: String,
+  name: String,
+  genre: String,
+}, {_id: false});
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -32,10 +39,7 @@ const userSchema = new Schema({
     type: String,
     required: false
   },
-  favorites: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Playlist'
-  }],
+  favorites: [favoritePlaylistSchema],
 });
 
 

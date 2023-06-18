@@ -2,6 +2,13 @@ const { gql } = require('apollo-server-express');
 
 
 const typeDefs = gql`
+  type FavoritePlaylist {
+  spotifyPlaylistID: String
+  imgUrl: String
+  name: String
+  genre: String
+ }
+
   type User {
     _id: ID
     username: String
@@ -10,6 +17,7 @@ const typeDefs = gql`
     featuredPlaylists: [FeaturedPlaylist]
     userPlaylists: [UserPlaylist]
     communityPlaylists: [CommunityPlaylist]
+    favorites: [FavoritePlaylist]
   }
 
   type FeaturedPlaylist {
@@ -54,6 +62,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
+    userFavorites(_id: ID!): [FavoritePlaylist]
     user(_id: ID!): User
     featuredPlaylists: [FeaturedPlaylist]
     featuredPlaylist(_id: ID!): FeaturedPlaylist
@@ -80,6 +89,10 @@ const typeDefs = gql`
     deleteCommunityPlaylist(spotifyPlaylistID: String!): CommunityPlaylist
 
     updateUserPlaylist(spotifyPlaylistID: String!, name: String, songs: [String], imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
+
+    addFavoritePlaylist(spotifyPlaylistID: String!, imgUrl: String, name: String!, genre: String): User
+
+    removeFavoritePlaylist(spotifyPlaylistID: String!): User
 
   }
 `;
