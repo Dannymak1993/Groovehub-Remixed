@@ -5,25 +5,7 @@ import { ADD_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const SpotifyAuth = () => {
 
-  console.log('outside the hook')
-  useEffect(() => {
-    
-      const clientId= 'f770e82c1a024fff81d38b74f6863a9e';
-      const redirectUri= "http://localhost:3000/callback";
-      
-      const responseType= 'token';
-
-      //Generating the authorization URL
-      const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=playlist-read-private`;
-
-      window.location.href = authorizeUrl;
-
-  }, []);
-
-  // return <div>Redirecting to Spotify login.....</div>;
-};
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -57,7 +39,6 @@ const Signup = () => {
     }
     console.log('what is happening?');
     
-    return (SpotifyAuth());
   };
 
   return (
