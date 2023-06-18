@@ -5,11 +5,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { QUERY_USER_PLAYLIST } from '../../utils/queries.js';
 import { DELETE_USER_PLAYLIST, ADD_COMMUNITY_PLAYLIST } from '../../utils/mutations.js'
-import GetMyPlaylist from './GetMyPlaylist';
-
 
 const MyPlaylist = ({ setplaylistInfo }) => {
-
     const Navigate = useNavigate();
     const { loading, error, data } = useQuery(QUERY_USER_PLAYLIST);
     const userPlaylists = data?.userPlaylists || [];
@@ -118,8 +115,6 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                             <div className="gallery-name">{playlist.name}</div>
                         </div>
                     </Cell>
-
-
                 ))}
                 <Cell
                     className="grid-item create-cell"
