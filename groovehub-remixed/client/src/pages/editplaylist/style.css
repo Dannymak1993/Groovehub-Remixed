@@ -4,3 +4,16 @@
     align-items: center;
     height: 100vh;
 }
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.btn {
+    height: 35px;
+    border-radius: 10px;
+}

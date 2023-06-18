@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import UserAuth from '../../utils/auth.js';
 import './style.css';
 
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeItem, setActiveItem] = useState(null);
+    const navigate = useNavigate();
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -18,6 +21,24 @@ const Sidebar = () => {
         return activeItem === item;
     };
 
+    const handleLogout = () => {
+        // Clear token/id_token from local storage
+        localStorage.removeItem('token');
+        localStorage.removeItem('id_token');
+        // Perform any additional logout actions if necessary
+
+        // Refresh the page to reflect the logout state
+        window.location.reload();
+    };
+
+    const handleAuthentication = () => {
+        if (UserAuth.loggedIn()) {
+            handleLogout();
+        } else {
+            navigate('/authentication');
+        }
+    };
+
     return (
         <div className={`sidebar ${isOpen ? 'open' : ''}`}>
             <div className="sidebar-content">
@@ -27,10 +48,21 @@ const Sidebar = () => {
                             Home
                         </a>
                     </li>
-                    <li className="sidebar-menu-item">
+                    {/* <li className="sidebar-menu-item">
                         <a href="/authentication" onClick={toggleSidebar}>
                             Login or Sign Up Here
                         </a>
+                    </li> */}
+                    <li className="sidebar-menu-item">
+                        {UserAuth.loggedIn() ? (
+                            <a href="/" onClick={handleAuthentication}>
+                                Logout
+                            </a>
+                        ) : (
+                            <a href="/authentication" onClick={toggleSidebar}>
+                                Login or Sign Up Here
+                            </a>
+                        )}
                     </li>
                     <li className="sidebar-menu-item">
                         <a href="/myplaylist" onClick={toggleSidebar}>
@@ -43,7 +75,7 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className={`sidebar-menu-item ${isDropdownActive('about') ? 'active' : ''}`} id="abt-butn">
-                        <span className="dropdown-toggle" onClick={() => toggleDropdown('about')}>
+                        <span className="dropdown-toggle about-button" onClick={() => toggleDropdown('about')}>
                             About Us
                             <i className="fas fa-caret-down"></i>
                         </span>
