@@ -10,7 +10,7 @@ export const SpotifyAuthentication = () => {
     return (
         <div className="login-container">
             <h1>Welcome!</h1>
-            <Button class="auth-btn" variant="contained" color="primary" onClick={handleLogin}>
+            <Button className="auth-btn" variant="contained" color="primary" onClick={handleLogin}>
                 Begin Spotify Authentication
             </Button>
 
