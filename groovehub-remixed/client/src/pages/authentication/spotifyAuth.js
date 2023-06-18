@@ -8,11 +8,11 @@ const SpotifyAuth = () => {
         const clientId= 'f770e82c1a024fff81d38b74f6863a9e';
         const redirectUri= "http://localhost:3000/callback";
         
-        const responseType= 'code';
+        const responseType= 'token';
 
         //Generating the authorization URL
         //This includes spootify scopes, which are permissions that the user grants to the app
-        const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=playlist-read-private`;
+        const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=playlist-read-private&show_dialog=true`;
 
         window.location.href = authorizeUrl;
     }, []);
