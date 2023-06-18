@@ -60,9 +60,9 @@ const resolvers = {
       const playlist = await FeaturedPlaylist.create({ name, songs, spotifyPlaylistID, genre, upvotes, downvotes, user });
       return playlist;
     },
-    
-    addUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
-      const playlist = await UserPlaylist.create({ name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user });
+
+    addUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgUrl, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await UserPlaylist.create({ name, songs, spotifyPlaylistID, imgUrl, genre, upvotes, downvotes, user });
       return playlist;
     },
 

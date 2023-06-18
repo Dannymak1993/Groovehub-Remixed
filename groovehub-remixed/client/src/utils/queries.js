@@ -26,6 +26,7 @@ query UserPlaylists {
     genre
     name
     spotifyPlaylistID
+    imgUrl
   }
 }
 `;

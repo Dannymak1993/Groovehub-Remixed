@@ -22,6 +22,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
 
     const handlesubmit = (event, playlistId, name) => {
         console.log(event)
+
         setplaylistInfo({ playlist: playlistId, name: name });
         Navigate(`/viewplaylist/${playlistId}`);
         event.stopPropagation();
@@ -68,7 +69,11 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                         key={index}
                         className={`grid-item ${playlist.genre}`}
                         data-genre={playlist.genre}
-                        // style={`background:${playlist.imgURL}`}
+                        style={{ 
+                            backgroundImage: `url(${playlist.imgUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                          }}
                         onClick={(event) =>
                             handlesubmit(
                                 event,
