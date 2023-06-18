@@ -24,9 +24,7 @@ const AppRoutes = () => {
 
                 {/* <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} /> */}
-//                 <Route path="/spotifyAuth" element={<SpotifyAuth />} />
-
-                <Route path="/spotifyAuth" element={<Auth />} />
+                <Route path="/spotifyAuth" element={<SpotifyAuth />} />
 
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/viewplaylist/:playlistId" element={<ViewPlaylist playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
