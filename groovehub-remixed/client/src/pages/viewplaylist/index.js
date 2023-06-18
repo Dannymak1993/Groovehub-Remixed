@@ -12,7 +12,7 @@ const ViewPlaylist = ({ playlistInfo }) => {
         <h1 className="genre">{genre}</h1>
             <div className="center-container">
         <Playlist playlistId={playlistId} />
-        <LiveChat chatName = "anime" />
+        <LiveChat playlistId={playlistId} chatName={playlistId} genre={genre} />
             </div>
         </div>
     );

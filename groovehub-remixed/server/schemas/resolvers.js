@@ -8,6 +8,10 @@ const resolvers = {
     user: async (parent, { _id }, context) => {
       return await User.findById(_id);
     },
+    userFavorites: async (parent, { _id }, context) => {
+      const user = await User.findById(_id);
+      return user.favorites;
+    },
     featuredPlaylists: async () => await FeaturedPlaylist.find(),
     featuredPlaylist: async (parent, { _id }, context) => {
       return await FeaturedPlaylist.findById(_id);
@@ -72,6 +76,31 @@ const resolvers = {
       const playlist = await CommunityPlaylist.findOneAndDelete({ spotifyPlaylistID });
       return playlist;
     },
+
+    addFavoritePlaylist: async (parent, { spotifyPlaylistID, imgUrl, name, genre }, context) => {
+      if(context.user) {
+        const user = await User.findByIdAndUpdate(
+          context.user._id,
+          { $push: { favorites: { spotifyPlaylistID, imgUrl, name, genre } } },
+          { new: true }
+        );
+        return user;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeFavoritePlaylist: async (parent, { spotifyPlaylistID }, context) => {
+      if(context.user) {
+        const user = await User.findByIdAndUpdate(
+          context.user._id,
+          { $pull: { favorites: { spotifyPlaylistID } } },
+          { new: true }
+        );
+        return user;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     updateUserPlaylist: async (parent, { spotifyPlaylistID, name, songs, imgURL, genre, upvotes, downvotes, user }, context) => {
       const update = {};
       if (name) update.name = name;
