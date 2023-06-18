@@ -86,6 +86,7 @@ const typeDefs = gql`
     addCommunityPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
     
     deleteUserPlaylist(spotifyPlaylistID: String!): UserPlaylist
+    
     deleteCommunityPlaylist(spotifyPlaylistID: String!): CommunityPlaylist
 
     updateUserPlaylist(spotifyPlaylistID: String!, name: String, songs: [String], imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist

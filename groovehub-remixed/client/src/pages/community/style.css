@@ -1,9 +1,3 @@
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
 .dashboard-content {
     flex-grow: 1;
     overflow-y: auto;
@@ -35,9 +29,10 @@
     text-align: center;
     width: 220px;
     height: 220px;
-    background: #BBB;
+    /* background: #BBB; */
     border-radius: 50%;
     position: relative;
+    cursor: pointer;
 }
 
 .grid-item:hover::after {
@@ -100,4 +95,78 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.delete-button {
+    position: absolute;
+    top: 19px;
+    left: calc(50% + 55px);
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(206, 63, 63);
+    border: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: rgb(177, 121, 121);
+}
+
+.plus-sign {
+    font-size: 100px;
+    color: rgb(95, 219, 95);
+}
+
+.create-cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-content {
+    position: relative;
+    top: 25%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.create-cell:hover .create-content::before {
+    content: "Create New Playlist";
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.playlist-select {
+    width: 400px;
+    /* Adjust the width to your desired value */
+}
+
+.edit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.share-button:hover {
+    background-color: rgb(119, 168, 119);
+    /* Darker green on hover */
+}
+
+.about-button {
+    cursor: pointer !important;
 }

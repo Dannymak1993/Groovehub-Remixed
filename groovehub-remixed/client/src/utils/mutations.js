@@ -95,3 +95,11 @@ mutation Mutation($name: String!, $spotifyPlaylistId: String!) {
   }
 }
 `;
+
+export const DELETE_COMMUNITY_PLAYLIST = gql`
+mutation Mutation($spotifyPlaylistId: String!) {
+ deleteCommunityPlaylist( spotifyPlaylistID: $spotifyPlaylistId) {
+    spotifyPlaylistID
+  }
+}
+`;
