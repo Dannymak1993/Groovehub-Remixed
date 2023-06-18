@@ -14,6 +14,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
     const { loading, error, data } = useQuery(QUERY_USER_PLAYLIST);
     const userPlaylists = data?.userPlaylists || [];
     const [deleteUserPlaylist] = useMutation(DELETE_USER_PLAYLIST);
+    console.log(userPlaylists)
 
     const handleCreatePlaylist = () => {
         Navigate('/addplaylist');
@@ -22,7 +23,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
     const handlesubmit = (event, spotifyPlaylistID, name, genre) => {
         console.log(event)
         setplaylistInfo({ playlist: spotifyPlaylistID, name: name });
-        Navigate('/viewplaylist');
+        Navigate(`/viewplaylist/${spotifyPlaylistID}`);
         event.stopPropagation();
     };
 
@@ -53,7 +54,11 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                         key={index}
                         className={`grid-item ${playlist.genre}`}
                         data-genre={playlist.genre}
-                        // style={`background:${playlist.imgURL}`}
+                        style={{ 
+                            backgroundImage: `url(${playlist.imgUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                          }}
                         onClick={(event) =>
                             handlesubmit(
                                 event,

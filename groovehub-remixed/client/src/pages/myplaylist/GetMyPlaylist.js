@@ -73,12 +73,12 @@ const GetMyPlaylists = () => {
           onChange={(e) => {
             const selectedId = e.target.value;
             const selectedName = playlists.find(playlist => playlist.id === selectedId).name;
-            // const selectedImage = playlists.find(playlist => playlist.id === selectedId).images[0].url
+            const selectedImage = playlists.find(playlist => playlist.id === selectedId).images[0].url;
 
-            console.log("Selected option:", selectedId, selectedName);
+            console.log("Selected option:", selectedId, selectedName, selectedImage);
             setSpotifyPlaylistID(selectedId);
             setName(selectedName);
-            // setImgUrl(selectedImage);
+            setImgUrl(selectedImage);
           }}
         >
           <option value="">Select a Playlist Name</option>

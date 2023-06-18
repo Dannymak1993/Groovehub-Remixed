@@ -25,10 +25,11 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_USER_PLAYLIST = gql`
-mutation AddUserPlaylist($name: String!, $spotifyPlaylistID: String!) {
-  addUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistID) {
+mutation AddUserPlaylist($name: String!, $spotifyPlaylistID: String!, $imgUrl: String) {
+  addUserPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistID, imgUrl: $imgUrl) {
     _id
     name
+    imgUrl
   }
 }
 `;
