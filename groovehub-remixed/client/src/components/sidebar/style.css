@@ -82,3 +82,8 @@
 #abt-butn{
     color: rgb(0, 187, 255);
 }
+
+.sidebar-menu-item a:hover,
+#abt-butn:hover {
+    color: #1DB954;
+}

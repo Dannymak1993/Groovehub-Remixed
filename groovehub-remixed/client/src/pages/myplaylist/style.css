@@ -29,7 +29,6 @@
     text-align: center;
     width: 220px;
     height: 220px;
-    /* background: #BBB; */
     border-radius: 50%;
     position: relative;
     cursor: pointer;
@@ -47,7 +46,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    color: #FFF;
+    color: #FFF !important;
     font-family: 'Darumadrop One', cursive;
     opacity: 1;
     transition: opacity 0.3s ease;
@@ -125,9 +124,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgb(206, 63, 63);
     border: none;
-    color: rgb(0, 0, 0);
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -146,7 +143,7 @@
 
 .plus-sign {
     font-size: 100px;
-    color: rgb(95, 219, 95);
+    color: #1DB954;
 }
 
 .create-cell {
@@ -167,11 +164,13 @@
 .create-cell:hover .create-content::before {
     content: "Create New Playlist";
     font-size: 40px;
+    color:#ffffff;
     position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
+    
 }
 
 .playlist-select {

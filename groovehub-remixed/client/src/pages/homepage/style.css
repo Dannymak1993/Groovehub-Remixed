@@ -53,8 +53,8 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  color: #ffffff !important;
   font-family: 'Darumadrop One', cursive;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -68,8 +68,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff !important;
   display: flex;
   align-items: center;
   justify-content: center;

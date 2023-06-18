@@ -119,6 +119,11 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                 <Cell
                     className="grid-item create-cell"
                     onClick={handleCreatePlaylist}
+                    style={{
+                        backgroundImage: 'url(/images/Cell.gif)',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
                 >
                     <div className="create-content">
                         <span className="plus-sign">+</span>
