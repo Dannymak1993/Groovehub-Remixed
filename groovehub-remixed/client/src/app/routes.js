@@ -8,6 +8,7 @@ import ViewPlaylist from '../pages/viewplaylist/index.js';
 import MyPlaylist from '../pages/myplaylist/index.js';
 import AddPlaylist from '../pages/addplaylist/index.js';
 import EditPlaylist from '../pages/editplaylist/index.js';
+import Community from '../pages/community/index.js';
 import UserAuth from '../utils/auth.js';
 
 const AppRoutes = () => {
@@ -22,13 +23,11 @@ const AppRoutes = () => {
                 <Route path="/" element={<Homepage playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
                 <Route path="/authentication" element={<Authentication />} />
 
-                {/* <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} /> */}
                 <Route path="/spotifyAuth" element={<SpotifyAuth />} />
 
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/viewplaylist/:playlistId" element={<ViewPlaylist playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
-                {/*<Route path="/community" element={<Community />} />*/}
+                <Route path="/community" element={<Community playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
                 <Route path="/addplaylist" element={<AddPlaylist playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
                 <Route path="/editplaylist/:playlistId" element={<EditPlaylist playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
                 <Route path="/myplaylist" element={<MyPlaylist playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
@@ -39,8 +38,6 @@ const AppRoutes = () => {
         <Routes>
                 <Route path="/" element={<Homepage playlistInfo={playlistInfo} setplaylistInfo={setplaylistInfo} />} />
                 <Route path="/authentication" element={<Authentication />} />
-                {/* <Route path="/login" element={<Login />} /> */}
-                {/* <Route path="/signup" element={<Signup />} /> */}
                 <Route path="/spotifyAuth" element={<SpotifyAuth />} />
                 <Route path="/callback" element={<Callback />} />
                 <Route path="*" element={<Authentication />}/>

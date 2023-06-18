@@ -4,22 +4,23 @@ import './style.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { QUERY_USER_PLAYLIST } from '../../utils/queries.js';
-import { DELETE_USER_PLAYLIST } from '../../utils/mutations.js'
+import { DELETE_USER_PLAYLIST, ADD_COMMUNITY_PLAYLIST } from '../../utils/mutations.js'
 import GetMyPlaylist from './GetMyPlaylist';
 
 
 const MyPlaylist = ({ setplaylistInfo }) => {
-        
+
     const Navigate = useNavigate();
     const { loading, error, data } = useQuery(QUERY_USER_PLAYLIST);
     const userPlaylists = data?.userPlaylists || [];
     const [deleteUserPlaylist] = useMutation(DELETE_USER_PLAYLIST);
+    const [addCommunityPlaylist] = useMutation(ADD_COMMUNITY_PLAYLIST);
 
     const handleCreatePlaylist = () => {
         Navigate('/addplaylist');
     };
 
-    const handlesubmit = (event, playlistId, name, genre) => {
+    const handlesubmit = (event, playlistId, name) => {
         console.log(event)
         setplaylistInfo({ playlist: playlistId, name: name });
         Navigate(`/viewplaylist/${playlistId}`);
@@ -31,7 +32,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         Navigate(`/editplaylist/${spotifyPlaylistID}`);
     };
 
-    const handleDeletePlaylist = async ( name, spotifyPlaylistID, event) => {
+    const handleDeletePlaylist = async (name, spotifyPlaylistID, event) => {
         event.stopPropagation();
         console.log(name, spotifyPlaylistID)
         try {
@@ -39,6 +40,20 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                 variables: { name: name, spotifyPlaylistId: spotifyPlaylistID },
             });
             window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleSharePlaylist = async (name, spotifyPlaylistID, event) => {
+        event.stopPropagation();
+        try {
+            await addCommunityPlaylist({
+                variables: { name: name, spotifyPlaylistId: spotifyPlaylistID },
+            });
+            // Optionally, you can perform additional actions after saving to the community database
+            console.log('Playlist shared successfully!');
+            Navigate(`/community`);
         } catch (error) {
             console.log(error);
         }
@@ -66,39 +81,39 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                         <div className="gallery-content">
                             <button
                                 className="edit-button"
-                                onClick={(event) => 
+                                onClick={(event) =>
                                     handleEditPlaylist(
-                                    playlist.name,
-                                    playlist.spotifyPlaylistID,
-                                    event)}
+                                        playlist.name,
+                                        playlist.spotifyPlaylistID,
+                                        event)}
                             >
                                 Edit
                             </button>
                             <button
                                 className="delete-button"
-                            onClick={(event) => 
-                                handleDeletePlaylist(
-                                    playlist.name, 
-                                    playlist.spotifyPlaylistID,
-                                    event)}
+                                onClick={(event) =>
+                                    handleDeletePlaylist(
+                                        playlist.name,
+                                        playlist.spotifyPlaylistID,
+                                        event)}
                             >
                                 Delete
                             </button>
                             <button
                                 className="share-button"
-                                // onClick={(event) =>
-                                //     handleSharePlaylist(
-                                //         playlist.name,
-                                //         playlist.spotifyPlaylistID,
-                                //         event)}
+                                onClick={(event) =>
+                                    handleSharePlaylist(
+                                        playlist.name,
+                                        playlist.spotifyPlaylistID,
+                                        event)}
                             >
                                 Share
                             </button>
                             <div className="gallery-name">{playlist.name}</div>
                         </div>
                     </Cell>
-                
-                  
+
+
                 ))}
                 <Cell
                     className="grid-item create-cell"
