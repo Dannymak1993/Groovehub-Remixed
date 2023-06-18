@@ -210,3 +210,7 @@
     background-color: rgb(119, 168, 119);
     /* Darker green on hover */
 }
+
+.about-button {
+    cursor:pointer !important;
+}

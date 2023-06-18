@@ -11,10 +11,12 @@ const Homepage = ({setplaylistInfo}) => {
   const { loading, error, data } = useQuery(QUERY_FEATURED_PLAYLIST);
   const playlistdata = data?.featuredPlaylists || [];
 
-  const handlesubmit = (playlist, genre) => {
-    setplaylistInfo({ playlist: playlist, genre: genre })
-    Navigate('/viewplaylist')
-  }
+  //changes the state of setplaylistinfo and passes in playlist/genre
+
+  const handlesubmit = (playlistId, genre) => {
+    setplaylistInfo({ playlist: playlistId, genre: genre });
+    Navigate(`/viewplaylist/${playlistId}`);
+  };
   return (
     <div>
       <Grid className="grid">
