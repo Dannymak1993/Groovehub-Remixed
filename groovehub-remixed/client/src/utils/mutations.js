@@ -88,10 +88,11 @@ export const REMOVE_FAVORITE_PLAYLIST = gql`
 `;
 
 export const ADD_COMMUNITY_PLAYLIST = gql`
-mutation Mutation($name: String!, $spotifyPlaylistId: String!) {
-  addCommunityPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistId) {
+mutation Mutation($name: String!, $spotifyPlaylistId: String!, $imgUrl: String) {
+  addCommunityPlaylist(name: $name, spotifyPlaylistID: $spotifyPlaylistId, imgUrl: $imgUrl) {
     name
     spotifyPlaylistID
+    imgUrl
   }
 }
 `;

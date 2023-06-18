@@ -6,6 +6,7 @@ query CommunityPlaylists {
     genre
     name
     spotifyPlaylistID
+    imgUrl
   }
 }
 `;
