@@ -18,6 +18,7 @@ function LiveChat(props) {
     // uses date.now as a unique id
     const messageId = String(Date.now())
     const txt = document.querySelector("#message-field").value
+
     // todo: get username and add it to username const
     const username = "currentUser"
     const newData = {
@@ -32,17 +33,7 @@ function LiveChat(props) {
     scrollToBottom()
   }
 
-  // todo: fix this useEffect so it doesn't make 100 reads to the db a second when the dependencies array is removed
-  // fetches messages on webpage reload
-  // todo: setTimeout
-  // const getMessages = async () => {
-  //         const data = await getDocs(db);
-  //         const messages = data.docs.map((doc) => doc.data());
-  //         setMessages(messages);
-  //         }
-  //  setTimeout(getMessages, 2000)
-  // todo: the dependency array makes it so you can only see new messages
-  useEffect(() => {
+ useEffect(() => {
     const q = query(db, orderBy("timestamp"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let loadedMessages = [];
@@ -62,7 +53,6 @@ function LiveChat(props) {
 
   return (
     <div>
-      <h2>{props.genre} Chat</h2>
       <div id="messageWrapper">
         {messages.map((message) => (
           <div className={(message.postedBy === "currentUser") ? 'sentMessage' : "recievedMessage"} key={message.id}>{message.postedBy}: {message.text}</div>
