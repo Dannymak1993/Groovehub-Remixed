@@ -40,16 +40,17 @@ const EditPlaylist = () => {
 
     return (
         <div className="edit-playlist-container">
-            <form onSubmit={handleSubmit}>
+            <form className="edit-form" onSubmit={handleSubmit}>
                 <label>
                     New Playlist Name:
                     <input
                         type="text"
                         value={newPlaylistName}
                         onChange={handlePlaylistNameChange}
+                        placeholder="type new name here"
                     />
                 </label>
-                <button type="submit">Submit</button>
+                <button className="btn" type="submit">Submit</button>
             </form>
         </div>
     );

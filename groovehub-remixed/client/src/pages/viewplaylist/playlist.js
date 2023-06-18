@@ -1,5 +1,5 @@
-const Playlist = ({ playlistInfo }) => {
-const spotifyPlaylistID = playlistInfo.playlist;
+const Playlist = ({ playlistId }) => {
+const spotifyPlaylistID = playlistId;
 
 return (
 <iframe
