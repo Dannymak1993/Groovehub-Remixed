@@ -66,8 +66,8 @@ const resolvers = {
       return playlist;
     },
 
-    addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
-      const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user });
+    addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgUrl, genre, upvotes, downvotes, user }, context) => {
+      const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, imgUrl, genre, upvotes, downvotes, user });
       return playlist;
     },
 

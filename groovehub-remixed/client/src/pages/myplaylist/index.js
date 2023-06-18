@@ -46,11 +46,11 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         }
     };
 
-    const handleSharePlaylist = async (name, spotifyPlaylistID, event) => {
+    const handleSharePlaylist = async (name, spotifyPlaylistID, imgUrl, event) => {
         event.stopPropagation();
         try {
             await addCommunityPlaylist({
-                variables: { name: name, spotifyPlaylistId: spotifyPlaylistID },
+                variables: { name: name, spotifyPlaylistId: spotifyPlaylistID, imgUrl: imgUrl },
             });
             // Optionally, you can perform additional actions after saving to the community database
             console.log('Playlist shared successfully!');
@@ -110,6 +110,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
                                     handleSharePlaylist(
                                         playlist.name,
                                         playlist.spotifyPlaylistID,
+                                        playlist.imgUrl,
                                         event)}
                             >
                                 Share

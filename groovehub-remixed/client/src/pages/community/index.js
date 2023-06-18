@@ -23,7 +23,11 @@ const Community = ({ setplaylistInfo }) => {
                         onClick={() => handlesubmit(item.spotifyPlaylistID, item.name)}
                         key={index}
                         className={`grid-item ${item.name}`}
-                        data-genre={item.name}
+                        data-genre={item.name}  style={{ 
+                            backgroundImage: `url(${item.imgUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                          }}
                     >
                         <div className="gallery-name">{item.name}</div>
                         {/* <img
