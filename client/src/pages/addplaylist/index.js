@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-import { ADD_USER_PLAYLIST } from '../../utils/mutations';
+import { ADD_FAVORITE_PLAYLIST } from '../../utils/mutations';
 import './style.css';
 import GetMyPlaylists from '../myplaylist/GetMyPlaylist';
 
@@ -10,12 +10,12 @@ const AddPlaylist = () => {
     const Navigate = useNavigate()
     const [name, setName] = useState('');
     const [spotifyPlaylistID, setSpotifyPlaylistID] = useState('');
-    const [addUserPlaylist] = useMutation(ADD_USER_PLAYLIST);
+    const [addFavoritePlaylist] = useMutation(ADD_FAVORITE_PLAYLIST);
 
     const handleSavePlaylist = async () => {
         try {
             // Call the mutation to save the playlist to the database
-            await addUserPlaylist({
+            await addFavoritePlaylist({
                 variables: { name, spotifyPlaylistID },
             });
 
