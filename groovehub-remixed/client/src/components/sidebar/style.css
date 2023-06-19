@@ -87,3 +87,12 @@
 #abt-butn:hover {
     color: #1DB954;
 }
+
+@media (max-width: 450px) {
+    .sidebar-dropdown p {
+            font-size: 10px;
+        }
+        .sidebar-content {
+            padding: 0rem;
+        }
+}
