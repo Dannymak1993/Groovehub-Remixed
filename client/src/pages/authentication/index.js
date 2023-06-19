@@ -7,7 +7,7 @@ import Signup from '../signup/Signup';
 
 export const Authentication = () => {
     function handleLogin() {
-        window.location.href = 'http://localhost:3000/spotifyAuth';
+        window.location.pathname = '/spotifyAuth';
     }
 
     return (
