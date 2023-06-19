@@ -9,7 +9,7 @@ const SpotifyAuth = () => {
         const redirectUri = 
         // window.location.origin + "/callback" ||
         "https://groovehub-remixed-2f12da1632a2.herokuapp.com/callback";
-        
+
         const responseType= 'token';
 
         //Generating the authorization URL
