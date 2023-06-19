@@ -223,3 +223,37 @@
     margin-top: 0px;
     margin-bottom: -27px;
 }
+
+@media (max-width: 1150px) {
+    .grid {
+        grid-template-columns: repeat(2, 280px) !important;
+    }
+}
+
+@media (max-width: 830px) {
+    .grid {
+        grid-template-columns: repeat(1, 300px) !important;
+    }
+}
+
+@media (max-width: 450px) {
+    .grid {
+        grid-template-columns: repeat(2, 100px) !important;
+        padding-left: 7rem;
+        justify-content: center;
+    }
+
+    .homepage-header {
+        font-size: 30px;
+    }
+
+    .grid-item {
+        box-sizing: border-box;
+        text-align: center;
+        width: 25vw !important;
+        height: 25vw !important;
+        background: #BBB;
+        border-radius: 50%;
+        position: relative;
+    }
+}
