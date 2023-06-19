@@ -6,7 +6,7 @@ const SpotifyAuth = () => {
 
     useEffect(() => {
         const clientId= 'f770e82c1a024fff81d38b74f6863a9e';
-        const redirectUri= "http://localhost:3000/callback";
+        const redirectUri= window.location.host||"http://localhost:3000/callback";
         
         const responseType= 'token';
 
