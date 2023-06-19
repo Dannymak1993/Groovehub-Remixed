@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER_PLAYLIST } from '../../utils/mutations';
+import { UPDATE_FAVORITE_PLAYLIST_NAME } from '../../utils/mutations';
 import './style.css';
 
 const EditPlaylist = () => {
@@ -14,7 +14,7 @@ const EditPlaylist = () => {
         setNewPlaylistName(event.target.value);
     };
 
-    const [updateUserPlaylist] = useMutation(UPDATE_USER_PLAYLIST);
+    const [updateFavoritePlaylistName] = useMutation(UPDATE_FAVORITE_PLAYLIST_NAME); // change the mutation here
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,10 +23,10 @@ const EditPlaylist = () => {
         console.log('New Playlist Name:', newPlaylistName);
         
         try {
-            await updateUserPlaylist({
+            await updateFavoritePlaylistName({ // use the new mutation function here
                 variables: {
                     spotifyPlaylistID: playlistId,
-                    name: newPlaylistName,
+                    newName: newPlaylistName,
                 },
             });
 

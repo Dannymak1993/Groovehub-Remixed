@@ -42,46 +42,14 @@ export const QUERY_ME = gql`
   }
 `;
 
-
-
-// export const QUERY_USER = gql`
-//   query user($username: String!) {
-//     user(username: $username) {
-//       _id
-//       username
-//       email
-//       thoughts {
-//         _id
-//         thoughtText
-//         createdAt
-//       }
-//     }
-//   }
-// `;
-
-// export const QUERY_USERS = gql`
-// QueryAllUsers:
-// query {
-//   users {
-//     _id
-//     username
-//     email
-//   }
-// }
-// `;
-
-// QueryAllPlaylists:
-// query {
-//   playlists {
-//     _id
-//     title
-//     songs
-//     spotifyPlaylistID
-//     upvotes
-//     downvotes
-//     user {
-//       _id
-//       username
-//     }
-//   }
-// }
+export const GET_USER_FAVORITES = gql`
+  query GetUserFavorites($id: ID!) {
+    user(_id: $id) {
+      favorites {
+        spotifyPlaylistID
+        imgUrl
+        name
+      }
+    }
+  }
+`;

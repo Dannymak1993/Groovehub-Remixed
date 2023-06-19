@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from '../components/header';
 import Sidebar from '../components/sidebar';
@@ -10,6 +10,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import UserContext from '../utils/UserContext';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -20,6 +21,7 @@ const httpLink = createHttpLink({
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
+  console.log('This is the step where apollo grabs the token from the from local storage', token);
   // return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -36,18 +38,24 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState(null);
+  const [_id, setUserId] = useState(null);
+
   return (
-    <ApolloProvider client={client}>
-      <div className="App">
-        <Header className="header" />
-        <div className="sidebar">
-          <Sidebar />
+    <UserContext.Provider value={{ loggedIn, setLoggedIn, username, setUsername, _id, setUserId }}>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <Header className="header" />
+          <div className="sidebar">
+            <Sidebar />
+          </div>
+          <div className="content">
+            <AppRoutes />
+          </div>
         </div>
-        <div className="content">
-          <AppRoutes />
-        </div>
-      </div>
-    </ApolloProvider>
+      </ApolloProvider>
+    </UserContext.Provider>
   );
 }
 

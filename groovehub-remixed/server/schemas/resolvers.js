@@ -82,10 +82,30 @@ const resolvers = {
     },
 
     addFavoritePlaylist: async (parent, { spotifyPlaylistID, imgUrl, name, genre }, context) => {
-      if(context.user) {
+      if (context.user) {
+        const favoritePlaylist = {
+          spotifyPlaylistID,
+          imgUrl,
+          name,
+          genre: genre || "Unknown",  // if genre is not provided, set it as "Unknown" or any default value you like
+        };
+      
         const user = await User.findByIdAndUpdate(
           context.user._id,
-          { $push: { favorites: { spotifyPlaylistID, imgUrl, name, genre } } },
+          { $push: { favorites: favoritePlaylist } },
+          { new: true }
+        );
+      
+        return user;
+      }
+      throw new AuthenticationError('You need to be logged in to do that!');
+    },
+
+    removeFavoritePlaylist: async (parent, { spotifyPlaylistID }, context) => {
+      if (context.user) {
+        const user = await User.findByIdAndUpdate(
+          context.user._id,
+          { $pull: { favorites: { spotifyPlaylistID } } },
           { new: true }
         );
         return user;
@@ -93,11 +113,11 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    removeFavoritePlaylist: async (parent, { spotifyPlaylistID }, context) => {
-      if(context.user) {
-        const user = await User.findByIdAndUpdate(
-          context.user._id,
-          { $pull: { favorites: { spotifyPlaylistID } } },
+    updateFavoritePlaylistName: async (parent, { spotifyPlaylistID, newName }, context) => {
+      if (context.user) {
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id, 'favorites.spotifyPlaylistID': spotifyPlaylistID },
+          { 'favorites.$.name': newName },
           { new: true }
         );
         return user;
@@ -114,13 +134,13 @@ const resolvers = {
       if (upvotes !== undefined) update.upvotes = upvotes;
       if (downvotes !== undefined) update.downvotes = downvotes;
       if (user) update.user = user;
-      
+
       const playlist = await UserPlaylist.findOneAndUpdate(
         { spotifyPlaylistID }, // filter object
         { $set: update }, // update object
         { new: true } // option object, `new: true` returns the updated document
       );
-    
+
       return playlist;
     }
   }

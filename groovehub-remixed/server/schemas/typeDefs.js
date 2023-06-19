@@ -62,7 +62,6 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    userFavorites(_id: ID!): [FavoritePlaylist]
     user(_id: ID!): User
     featuredPlaylists: [FeaturedPlaylist]
     featuredPlaylist(_id: ID!): FeaturedPlaylist
@@ -70,31 +69,33 @@ const typeDefs = gql`
     userPlaylist(_id: ID!): UserPlaylist
     communityPlaylists: [CommunityPlaylist]
     communityPlaylist(_id: ID!): CommunityPlaylist
+    userFavorites(_id: ID!): [FavoritePlaylist]
     me: User
   }
 
 
  type Mutation {
+    #These mutations are for user authentication
     addUser(username: String!, email: String!, password: String!): Auth
-
     login(email: String!, password: String!): Auth
 
+    #These mutations are for the featured playlists
     addFeaturedPlaylist(name: String!, songs: [String]!, spotifyPlaylistID: String!, genre: String, upvotes: Int, downvotes: Int, user: ID): FeaturedPlaylist
 
+
+    #These mutations are for the user's playlists (no longer used)
     addUserPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
-
-    addCommunityPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
-    
     deleteUserPlaylist(spotifyPlaylistID: String!): UserPlaylist
-    
-    deleteCommunityPlaylist(spotifyPlaylistID: String!): CommunityPlaylist
-
     updateUserPlaylist(spotifyPlaylistID: String!, name: String, songs: [String], imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): UserPlaylist
 
+    #These mutations are for the user's favorite playlists
     addFavoritePlaylist(spotifyPlaylistID: String!, imgUrl: String, name: String!, genre: String): User
-
     removeFavoritePlaylist(spotifyPlaylistID: String!): User
+    updateFavoritePlaylistName(spotifyPlaylistID: String!, newName: String!): User
 
+    #These mutations are for the community playlists
+    deleteCommunityPlaylist(spotifyPlaylistID: String!): CommunityPlaylist
+    addCommunityPlaylist(name: String!, songs: [String], spotifyPlaylistID: String!, imgUrl: String, genre: String, upvotes: Int, downvotes: Int, user: ID): CommunityPlaylist
   }
 `;
 
