@@ -11,3 +11,7 @@
     justify-content: space-evenly;
     /* Add any additional styles if needed */
 }
+
+.userCount{
+    flex: 0.2; /* smaller flex value means less space */
+}
