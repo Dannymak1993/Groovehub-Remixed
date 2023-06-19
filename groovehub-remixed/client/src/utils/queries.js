@@ -1,14 +1,18 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_COMMUNITY_PLAYLIST = gql`
-query CommunityPlaylists {
-  communityPlaylists {
-    genre
-    name
-    spotifyPlaylistID
-    imgUrl
+  query communityPlaylists {
+    communityPlaylists {
+      _id
+      name
+      genre
+      spotifyPlaylistID
+      imgUrl
+      user {
+        _id
+      }
+    }
   }
-}
 `;
 
 export const QUERY_FEATURED_PLAYLIST = gql`

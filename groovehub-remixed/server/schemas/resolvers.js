@@ -66,9 +66,14 @@ const resolvers = {
       return playlist;
     },
 
-    addCommunityPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgUrl, genre, upvotes, downvotes, user }, context) => {
-      const playlist = await CommunityPlaylist.create({ name, songs, spotifyPlaylistID, imgUrl, genre, upvotes, downvotes, user });
-      return playlist;
+    addCommunityPlaylist: async (parent, args, context) => {
+      if (context.user) {
+        const playlist = new CommunityPlaylist({ ...args, user: context.user._id });
+        await playlist.save();
+        return playlist;
+      }
+      
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     deleteUserPlaylist: async (parent, { name, songs, spotifyPlaylistID, imgURL, genre, upvotes, downvotes, user }, context) => {
