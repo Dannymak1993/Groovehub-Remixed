@@ -60,7 +60,7 @@ const Sidebar = () => {
                             </a>
                         ) : (
                             <a href="/authentication" onClick={toggleSidebar}>
-                                Login or Sign Up Here
+                                Login/Sign Up
                             </a>
                         )}
                     </li>
