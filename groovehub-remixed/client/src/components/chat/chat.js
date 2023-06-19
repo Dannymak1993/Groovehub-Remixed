@@ -3,6 +3,7 @@ import { collection, addDoc, onSnapshot, orderBy, query } from "firebase/firesto
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { firestore } from './firebase'
+import jwt_decode from 'jwt-decode'; // import jwt-decode
 import './style.css'
 
 function LiveChat(props) {
@@ -61,7 +62,7 @@ function LiveChat(props) {
       <div id="messageWrapper">
         {messages.map((message) => (
           <div className={(message.postedBy === username) ? 'sentMessage' : "recievedMessage"} key={message.id}>
-            {`${message.postedBy}: ${message.text} (${formatTimestamp(message.timestamp)})`}
+            {`(${formatTimestamp(message.timestamp)}) ${message.postedBy}:  ${message.text}`}
           </div>
         ))}
       </div>
@@ -76,9 +77,18 @@ function LiveChat(props) {
 }
 
 async function getUsername() {
-  // implement API call to get username here
-  // then return the username. For now, we're returning a default username
-  return "defaultUser";
+  const token = localStorage.getItem('id_token'); // changed from 'jwtToken' to 'id_token'
+  if (!token) {
+    return "defaultUser";
+  }
+
+  try {
+    const decodedToken = jwt_decode(token);
+    return decodedToken.data.username; // assuming username is stored in the decoded token
+  } catch (err) {
+    console.error('Failed to decode token', err);
+    return "defaultUser";
+  }
 }
 
 function formatTimestamp(firebaseTimestamp) {

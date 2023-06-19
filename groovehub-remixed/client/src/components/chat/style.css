@@ -1,74 +1,76 @@
-.recievedMessage{
-    font-size: 18px;
-    background-color: #cc3b3b;
-    margin-top: 5px;
-    padding: 15px;
-    max-width: fit-content;
-    border-radius: 20px;
-    word-wrap:break-word; 
-    max-width:47%;
-    margin-left: 3px;
-    margin-bottom: 3px
-}
-
 body{
     background-color: black;
 }
+
+.recievedMessage{
+    font-size: 18px;
+    background-color: #007AFF; /* Changed color to iMessage blue */
+    margin-top: 5px;
+    padding: 15px;
+    border-radius: 20px;
+    word-wrap: break-word; 
+    max-width: 47%;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    color: white; /* This will make the text readable on the blue background */
+}
+
 .sentMessage{
     font-size: 18px;
-    align-self: end;
-    padding: 15px;
-    background-color: #38a5c9;
+    align-self: flex-end;
+    background-color: #1DB954; /* Changed color to Spotify green */
     margin-top: 5px;
-    padding-left: 15px;
+    padding: 15px;
     border-radius: 20px;
-    word-wrap :break-word;
+    word-wrap: break-word;
     max-width: 47%;
+    color: white; /* This will make the text readable on the green background */
 }
 
 #messageWrapper{
     background-color: aliceblue;
     border-radius: 20px;
     width: 100%;
-    display:flex;
     max-height: 570px;
     min-height: 570px;
     max-width: 600px;
     min-width: 600px;
-    flex-direction: column;
     height: 20%;
     overflow-y: scroll;
-    border: 2px black;
-
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
 }
 
 form{
     display: flex;
-    flex-direction: row;
-    height:20px;
-    width: 600px;
     justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 input{
-    width: 100%;
+    width: 80%;
     height: 30px;
     border-radius: 6px;
 }
 
-#message-btn {
-    border: 2px solid #000000;
-    background-color: #dddddd;
-    padding: 8px 16px;
+button {
+    background-color: #1DB954;
+    color: white;
+    border: none;
     border-radius: 5px;
-}
-
-#message-btn:hover {
-    background-color: #43b1d5;
-}
-
-.form-container {
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    height: 30px; /* Match the height of the input box */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+button:hover {
+    background-color: #1ED760;
 }
