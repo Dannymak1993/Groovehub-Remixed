@@ -1,41 +1,43 @@
 body{
+    font-family: 'Darumadrop One', cursive;
     background-color: black;
+    color: #e0e0e0;
 }
 
 .recievedMessage{
     font-size: 18px;
-    background-color: #007AFF; /* Changed color to iMessage blue */
+    background-color: #007AFF;
     margin-top: 5px;
     padding: 15px;
     border-radius: 20px;
     word-wrap: break-word; 
-    max-width: 47%;
+    max-width: 70%; /* Increased to match the first CSS */
     margin-left: 3px;
     margin-bottom: 3px;
-    color: white; /* This will make the text readable on the blue background */
+    color: white;
+    border-bottom-left-radius: 0; /* Added to match the first CSS */
 }
 
 .sentMessage{
     font-size: 18px;
     align-self: flex-end;
-    background-color: #1DB954; /* Changed color to Spotify green */
+    background-color: #1DB954;
     margin-top: 5px;
     padding: 15px;
     border-radius: 20px;
     word-wrap: break-word;
-    max-width: 47%;
-    color: white; /* This will make the text readable on the green background */
+    max-width: 70%; /* Increased to match the first CSS */
+    color: white;
+    border-bottom-right-radius: 0; /* Added to match the first CSS */
 }
 
 #messageWrapper{
     background-color: aliceblue;
-    border-radius: 20px;
+    border-radius: 12px;  /* to match the border-radius of iframe */
     width: 100%;
-    max-height: 570px;
-    min-height: 570px;
-    max-width: 600px;
-    min-width: 600px;
-    height: 20%;
+    height: 600px; /* height set to match iframe */
+    max-width: 600px; /* width set to match iframe */
+    min-width: 600px; /* width set to match iframe */
     overflow-y: scroll;
     border: 2px solid black;
     display: flex;
@@ -52,9 +54,11 @@ form{
 }
 
 input{
-    width: 80%;
+    flex: 1; /* Added to match the first CSS */
+    margin-right: 0.5rem; /* Added to match the first CSS */
     height: 30px;
     border-radius: 6px;
+    color: #000000; /* Added to match the first CSS */
 }
 
 button {
@@ -65,7 +69,7 @@ button {
     padding: 5px 10px;
     margin-left: 5px;
     cursor: pointer;
-    height: 30px; /* Match the height of the input box */
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
