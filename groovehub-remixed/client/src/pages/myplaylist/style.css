@@ -98,8 +98,8 @@
 
 .edit-button {
     position: absolute;
-    top:3px;
-    left:50%;
+    top: 3px;
+    left: 50%;
     z-index: 1;
     width: 40px;
     height: 40px;
@@ -164,13 +164,13 @@
 .create-cell:hover .create-content::before {
     content: "Create New Playlist";
     font-size: 40px;
-    color:#ffffff;
+    color: #ffffff;
     position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
 }
 
 .playlist-select {
@@ -179,7 +179,7 @@
 }
 
 .edit-container {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -211,5 +211,15 @@
 }
 
 .about-button {
-    cursor:pointer !important;
+    cursor: pointer !important;
+}
+
+.your-header {
+
+    font-size: 30px;
+    padding-left: 70px;
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: -27px;
 }

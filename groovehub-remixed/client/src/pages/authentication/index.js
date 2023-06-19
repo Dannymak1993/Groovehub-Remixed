@@ -12,7 +12,7 @@ export const Authentication = () => {
 
     return (
         <div className ="login-container">
-            <h1>Welcome!</h1>
+            <h1 className="login-header">Welcome!</h1>
             <Signup />
             <Login />
         </div>

@@ -18,6 +18,7 @@ const Homepage = ({setplaylistInfo}) => {
   };
   return (
     <div>
+      <h1 className="homepage-header">Homepage</h1>
       <Grid className="grid">
         {playlistdata.map((item, index) => (
           <Cell

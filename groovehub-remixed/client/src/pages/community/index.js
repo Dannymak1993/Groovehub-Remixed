@@ -34,6 +34,7 @@ const Community = ({ setplaylistInfo }) => {
 
     return (
         <div>
+            <h1 className="community-header">Community</h1>
             <Grid className="grid">
                 
                 {communityPlaylists.map((playlist, index) => (

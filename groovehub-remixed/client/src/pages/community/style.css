@@ -170,3 +170,12 @@
 .about-button {
     cursor: pointer !important;
 }
+
+.community-header {
+    font-size: 30px;
+    padding-left: 70px;
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: -27px;
+}

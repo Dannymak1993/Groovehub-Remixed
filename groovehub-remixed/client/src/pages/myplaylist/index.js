@@ -59,6 +59,7 @@ const MyPlaylist = ({ setplaylistInfo, userId }) => {
 
     return (
         <div>
+            <h1 className="your-header">Your Playlists</h1>
             <Grid className="grid">
 
                 {userFavorites.map((playlist, index) => (
