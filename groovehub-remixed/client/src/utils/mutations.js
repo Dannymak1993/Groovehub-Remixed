@@ -58,18 +58,17 @@ mutation UpdateUserPlaylist(
 `;
 
 export const ADD_FAVORITE_PLAYLIST = gql`
-  mutation AddFavoritePlaylist($spotifyPlaylistID: String!, $imgUrl: String, $name: String, $genre: String) {
-    addFavoritePlaylist(spotifyPlaylistID: $spotifyPlaylistID, imgUrl: $imgUrl, name: $name, genre: $genre) {
-      _id
-      username
-      favorites {
-        spotifyPlaylistID
-        imgUrl
-        name
-        genre
-      }
+  mutation AddFavoritePlaylist($spotifyPlaylistID: String!, $imgUrl: String, $name: String!, $genre: String) {
+  addFavoritePlaylist(spotifyPlaylistID: $spotifyPlaylistID, imgUrl: $imgUrl, name: $name, genre: $genre) {
+    _id
+    username
+    favorites {
+      spotifyPlaylistID
+      imgUrl
+      name
     }
   }
+}
 `;
 
 export const REMOVE_FAVORITE_PLAYLIST = gql`
@@ -82,6 +81,21 @@ export const REMOVE_FAVORITE_PLAYLIST = gql`
         imgUrl
         name
         genre
+      }
+    }
+  }
+`;
+
+export const UPDATE_FAVORITE_PLAYLIST_NAME = gql`
+  mutation UpdateFavoritePlaylistName($spotifyPlaylistID: String!, $newName: String!) {
+    updateFavoritePlaylistName(spotifyPlaylistID: $spotifyPlaylistID, newName: $newName) {
+      _id
+      username
+      favorites {
+        spotifyPlaylistID
+        name
+        genre
+        imgUrl
       }
     }
   }

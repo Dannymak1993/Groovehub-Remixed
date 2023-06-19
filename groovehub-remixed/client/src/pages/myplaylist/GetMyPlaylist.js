@@ -3,69 +3,50 @@ import './style.css';
 import axios from 'axios'
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-import { ADD_USER_PLAYLIST } from '../../utils/mutations';
+import { ADD_FAVORITE_PLAYLIST } from '../../utils/mutations'; 
 
-//this component calls the api and then returns the data
 const GetMyPlaylists = () => {
   const Navigate = useNavigate()
   const [playlists, setPlaylist] = useState();
   const [name, setName] = useState('');
   const [imgUrl, setImgUrl] = useState('');
   const [spotifyPlaylistID, setSpotifyPlaylistID] = useState('');
-  const [addUserPlaylist] = useMutation(ADD_USER_PLAYLIST);
-  console.log(playlists);
+  const [addFavoritePlaylist] = useMutation(ADD_FAVORITE_PLAYLIST);
 
   const handleSavePlaylist = async () => {
     try {
-      // Call the mutation to save the playlist to the database
-      const { data } = await addUserPlaylist({
+      const { data } = await addFavoritePlaylist({
         variables: { name, spotifyPlaylistID, imgUrl },
       });
 
-      // Redirect to the MyPlaylist page after saving the playlist
       Navigate('/myplaylist');
       window.location.reload();
     } catch (error) {
-      console.error(error, "hey look here");
+      console.error(error);
     }
   };
-
 
   useEffect(() => {
     const fetchPlaylist = async () => {
       try {
         const accessToken = localStorage.getItem('token');
-
-        // console.log(accessToken);
-
         const response = await axios.get('https://api.spotify.com/v1/me/playlists?limit=50', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        console.log(response.data);
         setPlaylist(response.data.items);
-
-
-
-
-
-        // console.log(response.data);
-
-
       } catch (err) {
         console.error('Error fetching playlist:', err);
-        // Handle error
       }
     };
     fetchPlaylist();
   }, []);
 
   if (!playlists) {
-    <GetMyPlaylists />
+    return <div>Loading playlists...</div>;
   } else {
     return (
-
       <div className="edit-container">
         <select
           className="playlist-select"
@@ -75,7 +56,6 @@ const GetMyPlaylists = () => {
             const selectedName = playlists.find(playlist => playlist.id === selectedId).name;
             const selectedImage = playlists.find(playlist => playlist.id === selectedId).images[0].url;
 
-            console.log("Selected option:", selectedId, selectedName, selectedImage);
             setSpotifyPlaylistID(selectedId);
             setName(selectedName);
             setImgUrl(selectedImage);
@@ -93,6 +73,5 @@ const GetMyPlaylists = () => {
     )
   }
 }
-export default GetMyPlaylists;
 
-// : {playlist.images[0].url
+export default GetMyPlaylists;

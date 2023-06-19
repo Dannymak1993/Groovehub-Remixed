@@ -3,14 +3,14 @@ import { Grid, Cell } from 'react-foundation';
 import './style.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-import { QUERY_USER_PLAYLIST } from '../../utils/queries.js';
-import { DELETE_USER_PLAYLIST, ADD_COMMUNITY_PLAYLIST } from '../../utils/mutations.js'
+import { GET_USER_FAVORITES } from '../../utils/queries.js';
+import { REMOVE_FAVORITE_PLAYLIST, ADD_COMMUNITY_PLAYLIST } from '../../utils/mutations.js'
 
-const MyPlaylist = ({ setplaylistInfo }) => {
+const MyPlaylist = ({ setplaylistInfo, userId }) => {
     const Navigate = useNavigate();
-    const { loading, error, data } = useQuery(QUERY_USER_PLAYLIST);
-    const userPlaylists = data?.userPlaylists || [];
-    const [deleteUserPlaylist] = useMutation(DELETE_USER_PLAYLIST);
+    const { loading, error, data } = useQuery(GET_USER_FAVORITES, { variables: { id: userId } });
+    const userFavorites = data?.user.favorites || [];
+    const [removeFavoritePlaylist] = useMutation(REMOVE_FAVORITE_PLAYLIST); // Using the new mutation
     const [addCommunityPlaylist] = useMutation(ADD_COMMUNITY_PLAYLIST);
 
     const handleCreatePlaylist = () => {
@@ -34,8 +34,8 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         event.stopPropagation();
         console.log(name, spotifyPlaylistID)
         try {
-            await deleteUserPlaylist({
-                variables: { name: name, spotifyPlaylistId: spotifyPlaylistID },
+            await removeFavoritePlaylist({
+                variables: { spotifyPlaylistID: spotifyPlaylistID },
             });
             window.location.reload();
         } catch (error) {
@@ -61,7 +61,7 @@ const MyPlaylist = ({ setplaylistInfo }) => {
         <div>
             <Grid className="grid">
 
-                {userPlaylists.map((playlist, index) => (
+                {userFavorites.map((playlist, index) => (
                     <Cell
                         key={index}
                         className={`grid-item ${playlist.genre}`}
