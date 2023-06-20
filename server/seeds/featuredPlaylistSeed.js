@@ -52,21 +52,9 @@ const featuredplaylistSeed = [
   },
 ];
 
-db.FeaturedPlaylist
-  .deleteMany({})
-  .then(() => db.FeaturedPlaylist.collection.insertMany(featuredplaylistSeed))
-  .then(data => {
-    console.log("Insert operation result: ", data);
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
-
-  module.exports = function seedCommunityPlaylist(db) {
-    return db.CommunityPlaylist.deleteMany({})
-      .then(() => db.CommunityPlaylist.collection.insertMany(communityPlaylistSeed))
-      .then(data => console.log("Community Playlist seed insertion completed: ", data.result))
-      .catch(err => console.error("Community Playlist seed insertion error: ", err));
-  };
+module.exports = function seedFeaturedPlaylist(db) {
+  return db.FeaturedPlaylist.deleteMany({})
+    .then(() => db.FeaturedPlaylist.collection.insertMany(featuredPlaylistSeed))
+    .then(data => console.log(" Featured Playlist seed insertion completed: ", data.result))
+    .catch(err => console.error("Featured Playlist seed insertion error: ", err));
+};

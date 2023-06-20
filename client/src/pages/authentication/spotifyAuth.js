@@ -6,7 +6,7 @@ const SpotifyAuth = () => {
         const clientId= 'f770e82c1a024fff81d38b74f6863a9e';
         const redirectUri = 
         // window.location.origin + "/callback" ||
-        "https://groovehub-remixed-2f12da1632a2.herokuapp.com/callback";
+            "https://groovehub-remixed-2f12da1632a2.herokuapp.com/callback" || "http://localhost:3000/callback";
         const responseType= 'token';
         //Generating the authorization URL
         //This includes spootify scopes, which are permissions that the user grants to the app

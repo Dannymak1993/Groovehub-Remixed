@@ -6,10 +6,9 @@ import Signup from '../signup/Signup';
 
 
 export const Authentication = () => {
-    function handleLogin() {
-        window.location.href = 'https://groovehub-remixed-2f12da1632a2.herokuapp.com/spotifyAuth';
-        // window.location.pathname = '/spotifyAuth';
-    }
+    // function handleLogin() {
+    //     window.location.href = 'https://groovehub-remixed-2f12da1632a2.herokuapp.com/spotifyAuth' || "http://localhost:3000/spotifyAuth"
+    // }
 
     return (
         <div className ="login-container">
