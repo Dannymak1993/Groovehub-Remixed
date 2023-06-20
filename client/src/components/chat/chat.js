@@ -73,11 +73,9 @@ function LiveChat(props) {
       messageRef.off("value", messageCallback);
       presenceRef.off("value", presenceCallback);
     };
-  }, []);
+  }, [playlistId]);
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  useEffect(scrollToBottom, [messages]);
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -93,13 +91,14 @@ function LiveChat(props) {
             {`(${formatTimestamp(message.timestamp)}) ${message.postedBy}:  ${message.text}`}
           </div>
         ))}
-        <div ref={messageEndRef} /> {/* This line */}
+        <div ref={messageEndRef} />
       </div>
-      <div className="userList">
+      <p className="userCount">{`Online Users: ${uniqueUsers.length}`}</p>
+      {/* <div className="userList">
         {uniqueUsers.map((user, index) => (
           <p key={index}>{user}</p>
         ))}
-      </div>
+      </div> */}
       <div className="form">
         <input value={newMessage} onKeyPress={handleKeyPress} onChange={(e) => setNewMessage(e.target.value)} />
         <button type="submit" onClick={sendMessage}>Send</button>
@@ -108,7 +107,6 @@ function LiveChat(props) {
   );
 
   async function getUsername() {
-    // Retrieve and decode the token to get the username
     const token = localStorage.getItem('id_token');
     if (!token) {
       return "defaultUser";
