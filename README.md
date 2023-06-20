@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# GrooveHub-Remixed
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  ##  Table of Contents 
+   - [Description](#desc) 
+   - [Installation](#ins)
+   - [Usage](#use)
+   - [Contribution Guidlines](#con) 
+   - [Test Instructions](#test)
+   - [Frameworks and resources](#frame)
+   - [Questions/Contact](#ques)
+   - [License](#license) 
+  
+  # Description <a id="desc"></a>
+  GrooveHub is a social networking site that aims to connect users with similar music tastes and help people share and discover all types of music. 
+  
+  # Installation <a id="ins"></a>
+  No installation required; visit the website, create an account or sign into an existing one and login to an existing Spotify account
+  
+  # Usage <a id="use"></a>
 
-## Available Scripts
+  [Application Link](https://groovehub-remixed-2f12da1632a2.herokuapp.com/)
 
-In the project directory, you can run:
+  [Sign Up/Sign In to Spotify](https://open.spotify.com/)
 
-### `npm start`
+  Users must create an account with a valid email and sign into an exisiting Spotify account before using. From there, users can click on playlists within the community or home tabs in order to listen to the playlists from within the application and chat with active users. Users can also upload playlists from Spotify using the playlist's Spotify ID or by importing it from their Spotify playlist library.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  # Images
+  Wireframe
+  <br>
+  <img src="./client/public/images/groovehub%20remixed%20framework%20(1).png" width ="400" height="600">
+  <br>
+  Login
+  <br>
+  <img src="./client/public/images/Screenshot%202023-06-18%20183227.png" width ="600" height="300">
+  <br>
+  Homepage
+  <br>
+  <img src="./client/public/images/home.png" width ="600" height="300">
+  <br>
+  Chat/Playlist Page
+  <br>
+  <img src="./client/public/images/playlistpage.png" width ="600" height="300">
+  <br>
+    Upload Playlist
+  <br>
+  <img src="./client/public/images/uploadplaylist.png" width ="600" height="300">
+  <br>
+   User Playlists
+  <br>
+  <img src="./client/public/images/yourplaylists.png" width ="600" height="300">
+  # Contribution Guidelines <a id="con"></a>
+  None
+  
+  # Test Instructions <a id="test"></a>
+  N/A
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  # Frameworks/Resources Used <a id="frame"></a>
+  - ReactJS
+  - MongoDB/Mongoose
+  - GraphQL/Apollo
+  - Google Firebase
+  - Spotify Playlist API
+  - Material UI
+  - React Foundation
 
-### `npm test`
+  
+  # Questions/Contact <a id="ques"></a>
+  <a href="https://github.com/Dannymak1993">Danny Mak</a>
+  <br>
+  <a href="https://github.com/Joecode22">Joe McKinney</a>
+  <br>
+  <a href="https://github.com/oscarmedina234">Oscar Medina</a>
+  <br>
+  <a href="https://github.com/SamH16205">Sam Halloum</a>
+  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  # License
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) https://opensource.org/licenses/MIT 
+  <a id="license"></a>
+  
