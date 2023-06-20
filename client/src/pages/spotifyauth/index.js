@@ -1,6 +1,7 @@
-import React from 'react';
+// import React from 'react';
 import './style.css';
 import Button from '@mui/material/Button';
+import React, { useEffect } from 'react';
 
 export const SpotifyAuthentication = () => {
     function handleLogin() {

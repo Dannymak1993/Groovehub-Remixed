@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { UPDATE_FAVORITE_PLAYLIST_NAME } from '../../utils/mutations';
 import './style.css';
 
 const EditPlaylist = () => {
     const { playlistId } = useParams();
+    const location = useLocation();
     const navigate = useNavigate();
 
     const [newPlaylistName, setNewPlaylistName] = useState('');
+
+    // Get the imageUrl from the state
+    const imageUrl = location.state?.imageUrl;
 
     const handlePlaylistNameChange = (event) => {
         setNewPlaylistName(event.target.value);
     };
 
-    const [updateFavoritePlaylistName] = useMutation(UPDATE_FAVORITE_PLAYLIST_NAME); // change the mutation here
+    const [updateFavoritePlaylistName] = useMutation(UPDATE_FAVORITE_PLAYLIST_NAME);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,7 +27,7 @@ const EditPlaylist = () => {
         console.log('New Playlist Name:', newPlaylistName);
         
         try {
-            await updateFavoritePlaylistName({ // use the new mutation function here
+            await updateFavoritePlaylistName({
                 variables: {
                     spotifyPlaylistID: playlistId,
                     newName: newPlaylistName,
@@ -52,6 +56,13 @@ const EditPlaylist = () => {
                 </label>
                 <button className="btn" type="submit">Submit</button>
             </form>
+
+            {/* Display the image if it's available */}
+            {imageUrl && (
+                <div>
+                    <img src={imageUrl} alt="Playlist" />
+                </div>
+            )}
         </div>
     );
 };

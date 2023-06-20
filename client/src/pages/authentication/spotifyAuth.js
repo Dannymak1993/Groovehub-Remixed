@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
-
 //This starts the authorization process for spotify when the user clicks on the spotify log in button. 
-
 const SpotifyAuth = () => {
 
     useEffect(() => {
@@ -9,18 +7,13 @@ const SpotifyAuth = () => {
         const redirectUri = 
         // window.location.origin + "/callback" ||
         "http://localhost:3000/callback";
-
-
         const responseType= 'token';
-
         //Generating the authorization URL
         //This includes spootify scopes, which are permissions that the user grants to the app
         const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=playlist-read-private&show_dialog=true`;
 
         window.location.href = authorizeUrl;
     }, []);
-
-    // return <div>Redirecting to Spotify login.....</div>;
 };
 
 export default SpotifyAuth;

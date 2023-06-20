@@ -15,3 +15,10 @@
 .userCount{
     flex: 0.2; /* smaller flex value means less space */
 }
+
+iframe {
+    width: 45%; /* adjust to your preference, less than 100% will reduce its width */
+    max-width: 500px; /* prevents the iframe from being wider than its parent */
+    margin-left: 10%; /* adds space to the left, adjust as needed */
+  }
+  

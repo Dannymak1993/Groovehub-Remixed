@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { database, auth } from './firebase';
 import jwt_decode from 'jwt-decode';
-import './style.css'; // assuming styles are saved in styles.css
+import './style.css';
 
 function LiveChat(props) {
   const { playlistId, userId } = props;
@@ -9,10 +9,10 @@ function LiveChat(props) {
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [uniqueUsers, setUniqueUsers] = useState([]);
+  const messageEndRef = useRef(null);
 
   const sendMessage = async (event) => {
     event.preventDefault();
-
     const newData = {
       text: newMessage,
       postedBy: username,
@@ -24,11 +24,13 @@ function LiveChat(props) {
 
   const trackUserPresence = (action) => {
     const userPresenceRef = database.ref(`chat_${playlistId}/presence/${userId}`);
-
+    const usernameRef = database.ref(`chat_${playlistId}/usernames/${userId}`);
     if (action === "enter") {
       userPresenceRef.set(true);
       userPresenceRef.onDisconnect().remove();
-    } 
+      usernameRef.set(username);
+      usernameRef.onDisconnect().remove();
+    }
   }
 
   const messageCallback = (snapshot) => {
@@ -47,60 +49,73 @@ function LiveChat(props) {
     const users = [];
     if (snapshot.exists()) {
       snapshot.forEach((child) => {
-        users.push(child.key);
+        database.ref(`chat_${playlistId}/usernames/${child.key}`).once('value')
+          .then(usernameSnapshot => {
+            users.push(usernameSnapshot.val());
+            setUniqueUsers(users);
+          });
       });
     }
-    setUniqueUsers(users);
+  }
+
+  const scrollToBottom = () => {
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   useEffect(() => {
     getUsername().then(name => setUsername(name));
-
     trackUserPresence("enter");
-
     const messageRef = database.ref(`chat_${playlistId}`).orderByChild("timestamp");
     messageRef.on("value", messageCallback);
-
     const presenceRef = database.ref(`chat_${playlistId}/presence`);
     presenceRef.on("value", presenceCallback);
-
     return () => {
       messageRef.off("value", messageCallback);
       presenceRef.off("value", presenceCallback);
-      // disconnect event is automatically handled by Firebase
     };
   }, []);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      sendMessage(event);
+    }
+  }
+
   return (
-    <div>
+    <div className="chat-container">
       <div id="messageWrapper">
         {messages.map((message, index) => (
           <div key={index} className={message.postedBy === username ? "sentMessage" : "recievedMessage"}>
             {`(${formatTimestamp(message.timestamp)}) ${message.postedBy}:  ${message.text}`}
           </div>
         ))}
+        <div ref={messageEndRef} /> {/* This line */}
       </div>
-      <div>
-        <p>Number of active users: {uniqueUsers.length}</p>
-        <form onSubmit={sendMessage}>
-          <input value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
-          <button type="submit">Send</button>
-        </form>
+      <div className="userList">
+        {uniqueUsers.map((user, index) => (
+          <p key={index}>{user}</p>
+        ))}
+      </div>
+      <div className="form">
+        <input value={newMessage} onKeyPress={handleKeyPress} onChange={(e) => setNewMessage(e.target.value)} />
+        <button type="submit" onClick={sendMessage}>Send</button>
       </div>
     </div>
-  )
-  
+  );
+
   async function getUsername() {
     // Retrieve and decode the token to get the username
-    // This code is dependent on the structure of your token
     const token = localStorage.getItem('id_token');
     if (!token) {
       return "defaultUser";
     }
-  
     try {
       const decodedToken = jwt_decode(token);
-      return decodedToken.data.username; // assuming username is stored in the decoded token
+      return decodedToken.data.username;
     } catch (err) {
       console.error('Failed to decode token', err);
       return "defaultUser";
@@ -108,8 +123,6 @@ function LiveChat(props) {
   }
 
   function formatTimestamp(timestamp) {
-    // Format the timestamp into a readable string
-    // This code may need to be adjusted depending on your timestamp format
     const date = new Date(timestamp);
     let hours = date.getHours();
     const minutes = String(date.getMinutes()).padStart(2, '0');
