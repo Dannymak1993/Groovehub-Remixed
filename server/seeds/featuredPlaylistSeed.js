@@ -52,7 +52,7 @@ const featuredplaylistSeed = [
   },
 ];
 
-module.exports = function seedFeaturedPlaylist(db) {
+module.exports = function seedeaturedPlaylist(db) {
   return db.FeaturedPlaylist.deleteMany({})
     .then(() => db.FeaturedPlaylist.collection.insertMany(featuredPlaylistSeed))
     .then(data => console.log(" Featured Playlist seed insertion completed: ", data.result))
