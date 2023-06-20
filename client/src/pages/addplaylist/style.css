@@ -8,3 +8,23 @@
 .edit-input {
     width:400px;
 }
+
+/* search response playlist styling */
+
+.playlists-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 15%; /* Add left and right padding to the container to use only the middle 70% of the page width */
+}
+
+.playlist-item {
+    width: 100%;
+    max-width: 200px; /* Reduce the maximum width of the playlist items to make the images smaller */
+    margin-bottom: 20px;
+}
+
+.playlist-image {
+    width: 100%;
+    height: auto;
+}

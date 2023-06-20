@@ -3,20 +3,15 @@ import axios from 'axios';
 
 const Profile = () => {
     const [profile, setProfile] = useState(null);
-
     useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const accessToken = localStorage.getItem('token');
-
-                // console.log(accessToken);
-
                 const response = await axios.get('https://api.spotify.com/v1/playlists/37i9dQZF1DZ06evO1brcxq/tracks', {
                   headers: {
                     Authorization: `Bearer ${accessToken}`,
                   },
                 });
-        
                 setProfile(response.data);
                 console.log(response.data);
             } catch (err) {
