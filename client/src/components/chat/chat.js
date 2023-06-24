@@ -5,11 +5,24 @@ import './style.css';
 
 function LiveChat(props) {
   const { playlistId, userId } = props;
-  const [username, setUsername] = useState("defaultUser");
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [uniqueUsers, setUniqueUsers] = useState([]);
   const messageEndRef = useRef(null);
+
+  //this state keeps track of whether the user list popup is open or not
+  const [isUserListOpen, setIsUserListOpen] = useState(false);
+  //this function toggles user state
+  const toggleUserList = () => {
+    setIsUserListOpen(!isUserListOpen);
+  };
+
+
+  // Instead of getting username on each render, we set it once in state.
+  const [username, setUsername] = useState('defaultUser');
+  useEffect(() => {
+    getUsername().then(name => setUsername(name));
+  }, []);
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -24,12 +37,9 @@ function LiveChat(props) {
 
   const trackUserPresence = (action) => {
     const userPresenceRef = database.ref(`chat_${playlistId}/presence/${userId}`);
-    const usernameRef = database.ref(`chat_${playlistId}/usernames/${userId}`);
     if (action === "enter") {
-      userPresenceRef.set(true);
+      userPresenceRef.set({ username, present: true });
       userPresenceRef.onDisconnect().remove();
-      usernameRef.set(username);
-      usernameRef.onDisconnect().remove();
     }
   }
 
@@ -49,13 +59,10 @@ function LiveChat(props) {
     const users = [];
     if (snapshot.exists()) {
       snapshot.forEach((child) => {
-        database.ref(`chat_${playlistId}/usernames/${child.key}`).once('value')
-          .then(usernameSnapshot => {
-            users.push(usernameSnapshot.val());
-            setUniqueUsers(users);
-          });
+        users.push(child.val().username); // Using updated presence node
       });
     }
+    setUniqueUsers(users);
   }
 
   const scrollToBottom = () => {
@@ -63,7 +70,6 @@ function LiveChat(props) {
   }
 
   useEffect(() => {
-    getUsername().then(name => setUsername(name));
     trackUserPresence("enter");
     const messageRef = database.ref(`chat_${playlistId}`).orderByChild("timestamp");
     messageRef.on("value", messageCallback);
@@ -73,7 +79,7 @@ function LiveChat(props) {
       messageRef.off("value", messageCallback);
       presenceRef.off("value", presenceCallback);
     };
-  }, [playlistId]);
+  }, [playlistId, username]); // Added username to dependency array
 
   useEffect(scrollToBottom, [messages]);
 
@@ -86,19 +92,23 @@ function LiveChat(props) {
   return (
     <div className="chat-container">
       <div id="messageWrapper">
-        {messages.map((message, index) => (
-          <div key={index} className={message.postedBy === username ? "sentMessage" : "recievedMessage"}>
+        {messages.map((message) => (
+          <div key={message.timestamp} className={message.postedBy === username ? "sentMessage" : "recievedMessage"}>
             {`(${formatTimestamp(message.timestamp)}) ${message.postedBy}:  ${message.text}`}
           </div>
         ))}
         <div ref={messageEndRef} />
       </div>
-      <p className="userCount">{`Online Users: ${uniqueUsers.length}`}</p>
-      {/* <div className="userList">
-        {uniqueUsers.map((user, index) => (
-          <p key={index}>{user}</p>
-        ))}
-      </div> */}
+      
+      <button className="userCount" onClick={toggleUserList}>{`Online Users: ${uniqueUsers.length}`}</button>
+      {isUserListOpen && (
+        <div className="userList">
+          {uniqueUsers.map((user) => (
+            <p key={user}>{user}</p>
+          ))}
+        </div>
+      )}
+
       <div className="form">
         <input value={newMessage} onKeyPress={handleKeyPress} onChange={(e) => setNewMessage(e.target.value)} />
         <button type="submit" onClick={sendMessage}>Send</button>
