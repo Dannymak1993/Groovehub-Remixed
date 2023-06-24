@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 
 export const SpotifyAuthentication = () => {
     function handleLogin() {
-        window.location.href = 'http://localhost:3000/spotifyAuth';
+        window.location.href = 'https://groovehub-remixed-2f12da1632a2.herokuapp.com/spotifyAuth';
     }
 
     return (
