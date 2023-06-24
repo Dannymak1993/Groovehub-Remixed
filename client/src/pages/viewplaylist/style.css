@@ -6,7 +6,7 @@
 }
 
 .center-container {
-    padding-left: 100px;
+    padding-left: 160px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -21,5 +21,6 @@ iframe {
     width: 45%; /* adjust to your preference, less than 100% will reduce its width */
     max-width: 500px; /* prevents the iframe from being wider than its parent */
     margin-left: 10%; /* adds space to the left, adjust as needed */
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 50%);
   }
   
