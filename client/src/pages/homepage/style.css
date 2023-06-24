@@ -23,7 +23,7 @@
   justify-content: center;
   align-items: center;
   justify-items: end;
-
+  margin-bottom: 20px;
 }
 
 .grid::after {
@@ -112,7 +112,7 @@
   justify-content: center;
   margin-top: 0px;
   margin-bottom: -27px;
-  color:#000000;
+  color: #000000;
 }
 
 @media (max-width: 1150px) {
@@ -129,22 +129,22 @@
 
 @media (max-width: 450px) {
   .grid {
-      grid-template-columns: repeat(2, 100px) !important;
-      padding-left: 7rem;
-      justify-content: center;
-    }
+    grid-template-columns: repeat(2, 100px) !important;
+    padding-left: 7rem;
+    justify-content: center;
+  }
 
-    .homepage-header {
-      font-size: 30px;
-    }
+  .homepage-header {
+    font-size: 30px;
+  }
 
-        .grid-item {
-          box-sizing: border-box;
-          text-align: center;
-          width: 25vw !important;
-          height: 25vw !important;
-          background: #BBB;
-          border-radius: 50%;
-          position: relative;
-        }
+  .grid-item {
+    box-sizing: border-box;
+    text-align: center;
+    width: 25vw !important;
+    height: 25vw !important;
+    background: #BBB;
+    border-radius: 50%;
+    position: relative;
+  }
 }
