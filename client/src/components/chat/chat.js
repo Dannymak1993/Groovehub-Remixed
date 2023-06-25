@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { database, auth } from './firebase';
+import firebase, { database, auth } from './firebase';
+// import { database, auth } from './firebase';
 import jwt_decode from 'jwt-decode';
 import './style.css';
 
