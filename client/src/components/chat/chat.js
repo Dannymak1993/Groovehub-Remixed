@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { database, auth } from './firebase';
+import firebase, { database, auth } from './firebase';
+// import { database, auth } from './firebase';
 import jwt_decode from 'jwt-decode';
 import './style.css';
 
@@ -24,12 +25,13 @@ function LiveChat(props) {
     getUsername().then(name => setUsername(name));
   }, []);
 
+  //Modified this function to use firebase's time stamp instead of Date.now()
   const sendMessage = async (event) => {
     event.preventDefault();
     const newData = {
       text: newMessage,
       postedBy: username,
-      timestamp: Date.now()
+      timestamp: firebase.database.ServerValue.TIMESTAMP // Use Firebase server's timestamp
     }
     await database.ref(`chat_${playlistId}`).push(newData);
     setNewMessage("");
