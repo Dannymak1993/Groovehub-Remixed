@@ -11,7 +11,7 @@
    - [License](#license) 
   
   # Description <a id="desc"></a>
-  GrooveHub is a social networking site that aims to connect users with similar music tastes and help people share and discover all types of music. 
+  GrooveHub is a social networking site that aims to connect users with similar music tastes and help people share and discover wide varieties of music. 
   
   # Installation <a id="ins"></a>
   No installation required; visit the website, create an account or sign into an existing one and login to an existing Spotify account
